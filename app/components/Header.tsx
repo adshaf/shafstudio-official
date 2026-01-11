@@ -1,13 +1,16 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +29,17 @@ export default function Header() {
     }
   }, [mobileMenuOpen]);
 
+  // Scroll to top when clicking logo
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      // If already on homepage, smooth scroll to top
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    // If navigating from another page, Next.js will handle the navigation
+    // and the homepage will need to scroll to top on mount
+  };
+
   return (
     <>
       <motion.header
@@ -33,11 +47,15 @@ export default function Header() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-50 w-full px-6 py-1 md:px-12 lg:px-20 border-b border-slate-900/5 backdrop-blur-sm transition-all duration-300 ${
-          scrolled ? "bg-white/50" : "bg-white/0"
+          scrolled ? "bg-white/80" : "bg-white/0"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between">
-          <div className="flex items-center text-slate-900 relative">
+          <Link
+            href="/"
+            className="flex items-center text-slate-900 relative"
+            onClick={handleLogoClick}
+          >
             <div className="flex h-20 w-20 items-center justify-center relative">
               <Image
                 src="/assets/images/Logo-coloured-no-bg.png"
@@ -49,43 +67,46 @@ export default function Header() {
             <span className="text-3xl text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600 absolute top-6 left-17">
               shafstudio
             </span>
-          </div>
+          </Link>
           <nav className="hidden md:flex items-center gap-10">
-            <a
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-primary"
-              href="#home"
-            >
-              Home
-            </a>
-            <a
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-primary"
-              href="#services"
-            >
-              Services
-            </a>
-            <a
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-primary"
-              href="#work"
-            >
-              Work
-            </a>
-            <a
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-primary"
-              href="#about"
+            <Link
+              className="link-nav"
+              href={pathname === "/" ? "#about" : "/#about"}
             >
               About
-            </a>
-            <a
-              className="text-sm font-medium text-slate-600 transition-colors hover:text-primary"
-              href="#contact"
+            </Link>
+            <Link
+              className="link-nav"
+              href={pathname === "/" ? "#services" : "/#services"}
             >
-              Contact
-            </a>
+              Services
+            </Link>
+            <Link
+              className="link-nav"
+              href={pathname === "/" ? "#work" : "/#work"}
+            >
+              Work
+            </Link>
+            <Link
+              className="link-nav"
+              href={pathname === "/" ? "#process" : "/#process"}
+            >
+              Process
+            </Link>
+            <Link
+              className="link-nav"
+              href={pathname === "/" ? "#testimonials" : "/#testimonials"}
+            >
+              Testimonials
+            </Link>
           </nav>
           <div className="flex items-center gap-4">
-            <a href="#contact" className="hidden lg:flex h-10 items-center justify-center rounded bg-primary hover:bg-blue-600 px-6 text-sm font-bold text-white transition-all shadow-lg shadow-primary/20">
-              Get Started
-            </a>
+            <Link
+              href={pathname === "/" ? "#contact" : "/#contact"}
+              className="hidden lg:flex h-10 items-center justify-center rounded bg-primary hover:bg-blue-600 px-6 button-text-standard text-white transition-all shadow-lg shadow-primary/20"
+            >
+              Got questions?
+            </Link>
             <button
               className="flex md:hidden items-center justify-center text-slate-900 hover:text-primary transition-colors"
               onClick={() => setMobileMenuOpen(true)}

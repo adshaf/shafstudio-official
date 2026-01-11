@@ -12,7 +12,7 @@ export default function SloganSection() {
       <div className="absolute top-6 left-6 md:top-12 md:left-12 z-10 hidden sm:flex flex-col gap-1">
         <div className="flex items-center gap-2">
           <div className="h-2 w-2 bg-primary animate-pulse rounded-none"></div>
-          <span className="text-primary/90 text-[10px] tracking-[0.2em] uppercase font-bold">
+          <span className="caption text-primary/90 tracking-[0.2em] uppercase font-bold">
             SYS.STATUS: ONLINE
           </span>
         </div>
@@ -20,10 +20,10 @@ export default function SloganSection() {
       </div>
 
       <div className="absolute top-6 right-6 md:top-12 md:right-12 z-10 hidden sm:block text-right">
-        <p className="text-slate-500 text-[10px] tracking-[0.2em] font-mono">
+        <p className="caption text-slate-500 tracking-[0.2em] uppercase">
           EST. 2024
         </p>
-        <p className="text-slate-400 text-[10px] tracking-[0.2em] font-mono">
+        <p className="caption text-slate-400 tracking-[0.2em] uppercase">
           SEC_01 // INTRO
         </p>
       </div>
@@ -32,7 +32,7 @@ export default function SloganSection() {
         <span className="material-symbols-outlined text-primary/50 text-3xl">
           grid_4x4
         </span>
-        <div className="flex flex-col text-[10px] text-slate-500 font-mono leading-tight">
+        <div className="flex flex-col caption text-slate-500 leading-tight">
           <span>X: 00.92</span>
           <span>Y: 88.14</span>
         </div>
@@ -58,13 +58,13 @@ export default function SloganSection() {
           className="mb-8 flex items-center justify-center"
         >
           <div className="flex items-center gap-3 border-l-2 border-primary pl-3 py-1">
-            <span className="text-primary text-xs font-bold tracking-[0.25em] uppercase">
-              Architecture of the Web
+            <span className="label-uppercase text-base">
+              Hassle-free Process from Start to Finish
             </span>
           </div>
         </motion.div>
 
-        <h1 className="text-slate-900 text-center font-bold tracking-tighter leading-[0.9] text-[48px] sm:text-[64px] md:text-[80px] lg:text-[100px] mb-8 select-none">
+        <h1 className="heading-hero text-center tracking-tighter leading-[0.9] mb-8 select-none">
           <div className="block">
             <motion.span
               initial={{ opacity: 0, y: 100 }}
@@ -73,7 +73,7 @@ export default function SloganSection() {
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
               className="block"
             >
-              PRECISION
+              smooth
             </motion.span>
           </div>
           <div className="block">
@@ -84,9 +84,19 @@ export default function SloganSection() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="block"
             >
-              IN{" "}
+              simple
+            </motion.span>
+          </div>
+          <div className="block">
+            <motion.span
+              initial={{ opacity: 0, y: 100 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="block"
+            >
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">
-                PIXELS.
+                stress-free
               </span>
             </motion.span>
           </div>
@@ -96,7 +106,7 @@ export default function SloganSection() {
           initial={{ opacity: 0, scaleX: 0 }}
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
           className="w-full max-w-[200px] h-[2px] bg-white mb-8 relative overflow-hidden rounded-none"
         >
           <div className="absolute inset-0 bg-primary w-full h-full -translate-x-full animate-[shimmer_2s_infinite]"></div>
@@ -109,12 +119,16 @@ export default function SloganSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="max-w-[720px] mx-auto text-center"
         >
-          <p className="text-slate-600 text-base md:text-xl font-normal leading-relaxed">
-            We build digital experiences where{" "}
+          <p className="body-large">
+            We believe building a website should be a{" "}
             <span className="text-slate-900 font-bold">
-              technical excellence
+              seamless & exciting
             </span>{" "}
-            meets aesthetic perfection. No compromises.
+            experience.
+          </p>
+          <p className="body-large">
+            From concept to launch, we guide you through every step with clarity
+            and care.
           </p>
         </motion.div>
 
@@ -125,15 +139,18 @@ export default function SloganSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-12 flex flex-col sm:flex-row gap-6"
         >
-          <button className="relative group bg-primary hover:bg-white text-white hover:text-blue-600 px-8 py-4 text-sm font-bold tracking-widest uppercase transition-all duration-300 rounded-none border border-primary overflow-hidden shadow-lg shadow-primary/10">
+          <a
+            href="#process"
+            className="relative group bg-primary hover:bg-white text-white hover:text-blue-600 px-8 py-4 button-text-standard transition-all duration-300 rounded-none border border-primary overflow-hidden shadow-lg shadow-primary/10"
+          >
             <span className="relative z-10 flex items-center gap-2">
-              Initialize Project
+              See Our Process Timeline
               <span className="material-symbols-outlined text-[18px] group-hover:rotate-45 transition-transform duration-300">
                 arrow_outward
               </span>
             </span>
             <div className="absolute inset-0 bg-white transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 origin-left ease-in-out z-0"></div>
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>

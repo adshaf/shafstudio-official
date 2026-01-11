@@ -1,165 +1,11 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-@theme {
-  --color-primary: #3b82f6;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Typography System - Shafstudio */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+  /* ================================
+     HEADING STYLES
+     ================================ */
 
-/* Hero Background Gradient */
-.hero-bg-light {
-  background: linear-gradient(135deg, #e0f2fe 0%, #e0e7ff 50%, #f3e8ff 100%);
-  background-attachment: fixed;
-}
-
-/* Tech Grid Background */
-.tech-grid {
-  background-size: 50px 50px;
-  background-image: linear-gradient(
-      to right,
-      rgba(59, 130, 246, 0.08) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
-}
-
-/* Scanline Effect */
-.scanline {
-  background: linear-gradient(
-    to bottom,
-    rgba(255, 255, 255, 0),
-    rgba(255, 255, 255, 0) 50%,
-    rgba(0, 0, 0, 0.03) 50%,
-    rgba(0, 0, 0, 0.03)
-  );
-  background-size: 100% 4px;
-  pointer-events: none;
-}
-
-/* Tech Grid for Featured Work */
-.bg-tech-grid {
-  background-size: 40px 40px;
-  background-image: linear-gradient(
-      to right,
-      rgba(0, 0, 0, 0.03) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-}
-
-/* Tech Clip Paths */
-.tech-clip-br {
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 92% 100%, 0 100%);
-}
-
-.tech-clip-bl {
-  clip-path: polygon(100% 0, 0 0, 0 85%, 8% 100%, 100% 100%);
-}
-
-.tech-clip-tr {
-  clip-path: polygon(0 0, 92% 0, 100% 15%, 100% 100%, 0 100%);
-}
-
-.tech-clip-tl {
-  clip-path: polygon(100% 0, 8% 0, 0% 15%, 0% 100%, 100% 100%);
-}
-
-/* No Scrollbar */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-/* Gradient Backgrounds for Testimonials */
-.bg-gradient-custom {
-  background: linear-gradient(135deg, #eff6ff 0%, #eef2ff 50%, #f5f3ff 100%);
-}
-
-.card-gradient {
-  background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.6) 0%,
-    rgba(255, 255, 255, 0.3) 100%
-  );
-}
-
-/* Animations */
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-/* Material Symbols Font Settings */
-.material-symbols-outlined {
-  font-variation-settings: "FILL" 0, "wght" 300, "GRAD" 0, "opsz" 24;
-}
-
-/* reCAPTCHA Badge */
-.grecaptcha-badge {
-  z-index: 9999 !important;
-}
-
-/* ================================
-   Typography System - Shafstudio
-   ================================ */
-
-@layer utilities {
-  /* Heading Styles */
+  /* H1 - Hero Level */
   .heading-hero {
     font-size: 3rem;
     font-weight: 700;
@@ -175,6 +21,7 @@ body {
     }
   }
 
+  /* H1 - Section Level */
   .heading-section {
     font-size: 2.5rem;
     font-weight: 700;
@@ -190,6 +37,7 @@ body {
     }
   }
 
+  /* H2 - Major Subsection */
   .heading-major {
     font-size: 2rem;
     font-weight: 700;
@@ -205,6 +53,7 @@ body {
     }
   }
 
+  /* H2 - Standard Subsection */
   .heading-standard {
     font-size: 1.75rem;
     font-weight: 700;
@@ -219,6 +68,7 @@ body {
     }
   }
 
+  /* H3 - Section Headers */
   .heading-subsection {
     font-size: 1.5rem;
     font-weight: 700;
@@ -233,6 +83,7 @@ body {
     }
   }
 
+  /* H3 - Card Titles */
   .heading-card {
     font-size: 1.25rem;
     font-weight: 700;
@@ -247,6 +98,7 @@ body {
     }
   }
 
+  /* H4 - Minor Headers */
   .heading-minor {
     font-size: 1rem;
     font-weight: 600;
@@ -261,6 +113,7 @@ body {
     }
   }
 
+  /* H5 - Small Headers */
   .heading-small {
     font-size: 0.875rem;
     font-weight: 600;
@@ -275,6 +128,7 @@ body {
     }
   }
 
+  /* H6 - Micro Headers */
   .heading-micro {
     font-size: 0.75rem;
     font-weight: 600;
@@ -290,7 +144,11 @@ body {
     }
   }
 
-  /* Body Text Styles */
+  /* ================================
+     BODY TEXT STYLES
+     ================================ */
+
+  /* Body Large - Introductory paragraphs */
   .body-large {
     font-size: 1rem;
     font-weight: 400;
@@ -305,6 +163,7 @@ body {
     }
   }
 
+  /* Body Standard - Default paragraph text */
   .body-standard {
     font-size: 1rem;
     font-weight: 400;
@@ -313,6 +172,7 @@ body {
     color: #475569;
   }
 
+  /* Body Small - Secondary information */
   .body-small {
     font-size: 0.875rem;
     font-weight: 400;
@@ -321,6 +181,7 @@ body {
     color: #475569;
   }
 
+  /* Caption - Minimal auxiliary text */
   .caption {
     font-size: 0.75rem;
     font-weight: 500;
@@ -330,7 +191,11 @@ body {
     color: #64748b;
   }
 
-  /* Label Styles */
+  /* ================================
+     LABEL STYLES
+     ================================ */
+
+  /* Label Uppercase - Section tags, eyebrow text */
   .label-uppercase {
     font-size: 0.75rem;
     font-weight: 700;
@@ -341,6 +206,7 @@ body {
     color: #3b82f6;
   }
 
+  /* Label Standard - Form labels */
   .label-standard {
     font-size: 0.875rem;
     font-weight: 600;
@@ -348,7 +214,11 @@ body {
     color: #334155;
   }
 
-  /* Button Styles */
+  /* ================================
+     BUTTON STYLES
+     ================================ */
+
+  /* Button Text Large - Primary CTAs */
   .button-text-large {
     font-size: 1rem;
     font-weight: 700;
@@ -357,6 +227,7 @@ body {
     text-transform: uppercase;
   }
 
+  /* Button Text Standard - Secondary buttons */
   .button-text-standard {
     font-size: 0.875rem;
     font-weight: 700;
@@ -365,7 +236,11 @@ body {
     text-transform: uppercase;
   }
 
-  /* Link Styles */
+  /* ================================
+     LINK STYLES
+     ================================ */
+
+  /* Link Text - Inline links */
   .link-text {
     font-weight: 500;
     font-family: var(--font-noto-sans), sans-serif;
@@ -376,6 +251,7 @@ body {
     color: #3b82f6;
   }
 
+  /* Link Navigation - Header navigation */
   .link-nav {
     font-size: 0.875rem;
     font-weight: 600;
@@ -394,6 +270,19 @@ body {
     color: #3b82f6;
   }
 
+  /* ================================
+     VARIANT STYLES
+     ================================ */
+
+  /* Headings on dark backgrounds */
+  .heading-hero-inverse,
+  .heading-section-inverse,
+  .heading-major-inverse,
+  .heading-standard-inverse {
+    color: #ffffff;
+  }
+
+  /* Body text on dark backgrounds */
   .body-large-inverse {
     font-size: 1rem;
     font-weight: 400;
@@ -416,7 +305,11 @@ body {
     color: #dbeafe;
   }
 
-  /* Utility Classes */
+  /* ================================
+     UTILITY CLASSES
+     ================================ */
+
+  /* Gradient text effect */
   .text-gradient-primary {
     color: transparent;
     background-clip: text;
@@ -424,10 +317,12 @@ body {
     background-image: linear-gradient(to right, #3b82f6, #a855f7);
   }
 
+  /* Muted text variant */
   .text-muted {
     color: #64748b;
   }
 
+  /* Light text variant */
   .text-light {
     color: #94a3b8;
   }

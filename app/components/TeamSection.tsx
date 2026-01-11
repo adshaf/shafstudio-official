@@ -24,24 +24,18 @@ export default function TeamSection() {
 
           <div className="w-full lg:w-5/12 relative group min-h-[400px] lg:min-h-[600px] border-b lg:border-b-0 lg:border-r border-slate-300 overflow-hidden">
             <div
-              className="absolute inset-0 bg-cover bg-center transition-all duration-700 ease-in-out grayscale group-hover:grayscale-0"
+              className="absolute inset-0 bg-cover bg-center bg-black/50"
               style={{
-                backgroundImage: "url('./assets/images/selfie.jpeg')",
+                backgroundImage: "url('/assets/images/selfie.jpeg')",
               }}
             ></div>
             <div className="absolute inset-0 bg-primary/20 mix-blend-overlay pointer-events-none"></div>
             <div className="absolute top-6 left-6 flex flex-col gap-1 z-10 pointer-events-none">
-              <span className="text-[10px] text-white/90 font-mono tracking-widest bg-black/50 px-1 backdrop-blur-sm">
+              <span className="caption text-white/90 tracking-widest bg-black/50 px-1 backdrop-blur-sm uppercase">
                 FIG. 01
               </span>
-              <span className="text-[10px] text-white/90 font-mono tracking-widest bg-black/50 px-1 backdrop-blur-sm">
+              <span className="caption text-white/90 tracking-widest bg-black/50 px-1 backdrop-blur-sm uppercase">
                 LAT: 40.7128° N
-              </span>
-            </div>
-            <div className="absolute bottom-6 right-6 flex items-center gap-2 z-10 bg-[#101922]/40 px-3 py-1 border border-white/10">
-              <div className="w-2 h-2 rounded-none bg-green-500 animate-pulse"></div>
-              <span className="text-[10px] font-bold text-white tracking-widest uppercase">
-                Online
               </span>
             </div>
           </div>
@@ -51,15 +45,15 @@ export default function TeamSection() {
               <div className="flex flex-col gap-2">
                 <div className="flex items-center gap-2 mb-1">
                   <span className="w-6 h-[2px] bg-primary"></span>
-                  <span className="text-xs font-bold tracking-[0.2em] text-primary uppercase">
+                  <span className="label-uppercase">
                     The Founder
                   </span>
                 </div>
-                <h1 className="text-4xl lg:text-5xl font-bold leading-tight tracking-tight text-slate-900">
+                <h1 className="heading-major">
                   Adam Shafariansyah
                 </h1>
-                <p className="text-lg text-slate-500 font-medium">
-                  Web Design &amp; Web Development
+                <p className="body-large text-muted">
+                  {/* Web Design &amp; Web Development */}
                 </p>
               </div>
               <span className="material-symbols-outlined text-indigo-200 text-5xl font-light opacity-60 select-none">
@@ -68,39 +62,52 @@ export default function TeamSection() {
             </div>
 
             <div className="p-8 lg:p-10 flex-grow flex flex-col justify-center gap-8 bg-[#e0e7ff]">
-              <div className="prose max-w-none">
-                <p className="text-slate-700 text-lg leading-relaxed font-light">
-                  Bridging the gap between functional code and emotive design.
-                  With over a decade of experience in digital product design, I
-                  build interfaces that feel{" "}
-                  <span className="text-primary font-medium">inevitable</span>.
-                  I specialize in turning complex technical requirements into
-                  elegant, human-centric solutions.
+              <div className="prose max-w-none space-y-5">
+                <p className="body-large text-slate-700">
+                  {/* I’m a web designer and developer focused on creating clean,
+                  modern websites that help businesses present themselves with
+                  clarity and confidence. I believe great design should feel
+                  effortless, purposeful, and aligned with your brand. */}
+                  I’m a web designer & developer with a strong background in
+                  professional consulting, helping businesses build clean,
+                  modern, and high-performing websites.
+                </p>
+                <p className="body-large text-slate-700">
+                  Before moving into web development, I spent 7 years working as
+                  a Cost Consultant, working directly with clients on complex
+                  construction projects where clear communication, deadlines,
+                  and attention to detail were critical. That experience shapes
+                  how I work today - structured, reliable, and outcome-focused.
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                <p className="text-xs font-mono text-slate-500 uppercase tracking-widest mb-1">
+                <p className="caption uppercase mb-1">
                   Core Competencies_
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <div className="group flex items-center justify-center border border-slate-300 bg-[#eef2ff] px-4 py-2 hover:border-primary hover:bg-primary/5 transition-colors cursor-crosshair">
-                    <p className="text-slate-700 text-sm font-bold tracking-wide group-hover:text-primary">
-                      Figma
+                    <p className="button-text-standard text-slate-700 group-hover:text-primary">
+                      Web Design
                     </p>
                   </div>
                   <div className="group flex items-center justify-center border border-slate-300 bg-[#eef2ff] px-4 py-2 hover:border-primary hover:bg-primary/5 transition-colors cursor-crosshair">
-                    <p className="text-slate-700 text-sm font-bold tracking-wide group-hover:text-primary">
-                      React
+                    <p className="button-text-standard text-slate-700 group-hover:text-primary">
+                      Web Development
                     </p>
                   </div>
                   <div className="group flex items-center justify-center border border-slate-300 bg-[#eef2ff] px-4 py-2 hover:border-primary hover:bg-primary/5 transition-colors cursor-crosshair">
-                    <p className="text-slate-700 text-sm font-bold tracking-wide group-hover:text-primary">
-                      Three.js
+                    <p className="button-text-standard text-slate-700 group-hover:text-primary">
+                      Client Management
                     </p>
                   </div>
                   <div className="group flex items-center justify-center border border-slate-300 bg-[#eef2ff] px-4 py-2 hover:border-primary hover:bg-primary/5 transition-colors cursor-crosshair">
-                    <p className="text-slate-700 text-sm font-bold tracking-wide group-hover:text-primary">
-                      Python
+                    <p className="button-text-standard text-slate-700 group-hover:text-primary">
+                      Project Management
+                    </p>
+                  </div>
+                  <div className="group flex items-center justify-center border border-slate-300 bg-[#eef2ff] px-4 py-2 hover:border-primary hover:bg-primary/5 transition-colors cursor-crosshair">
+                    <p className="button-text-standard text-slate-700 group-hover:text-primary">
+                      SEO
                     </p>
                   </div>
                 </div>
@@ -108,52 +115,22 @@ export default function TeamSection() {
             </div>
 
             <div className="p-8 lg:px-10 lg:py-8 border-t border-slate-300 flex flex-col sm:flex-row justify-between items-center gap-6 bg-[#eef2ff]">
-              <div className="flex items-center gap-6">
-                <a
-                  aria-label="LinkedIn"
-                  className="text-slate-400 hover:text-primary transition-colors duration-300 group"
-                  href="#"
-                >
-                  <span className="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">
-                    work
-                  </span>
-                </a>
-                <a
-                  aria-label="GitHub"
-                  className="text-slate-400 hover:text-primary transition-colors duration-300 group"
-                  href="#"
-                >
-                  <span className="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">
-                    code
-                  </span>
-                </a>
-                <a
-                  aria-label="Twitter"
-                  className="text-slate-400 hover:text-primary transition-colors duration-300 group"
-                  href="#"
-                >
-                  <span className="material-symbols-outlined text-[24px] group-hover:scale-110 transition-transform">
-                    alternate_email
-                  </span>
-                </a>
-                <div className="h-6 w-px bg-slate-300 mx-2"></div>
-                <div className="select-none">
-                  <p className="font-light italic text-xl text-slate-400 font-serif tracking-tighter">
-                    Alex V.
-                  </p>
-                </div>
-              </div>
-              <button className="relative w-full sm:w-auto overflow-hidden group bg-[#233648] hover:bg-primary text-white transition-all duration-300">
+              <a
+                href="https://www.linkedin.com/in/ahmad-adam-shafariansyah/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-full sm:w-auto overflow-hidden group bg-[#233648] hover:bg-primary text-white transition-all duration-300"
+              >
                 <div className="absolute inset-0 w-0 bg-primary transition-all duration-[250ms] ease-out group-hover:w-full"></div>
                 <div className="relative flex items-center justify-center gap-3 px-8 py-3">
-                  <span className="text-sm font-bold uppercase tracking-widest">
+                  <span className="button-text-standard">
                     Connect
                   </span>
                   <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                     arrow_forward
                   </span>
                 </div>
-              </button>
+              </a>
             </div>
           </div>
         </motion.div>

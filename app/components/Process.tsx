@@ -1,47 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { PROCESS_STEPS } from "@/app/constants";
 
 export default function Process() {
-  const steps = [
-    {
-      id: 1,
-      icon: "travel_explore",
-      title: "Discovery",
-      description:
-        "We analyze your goals, market fit, and technical requirements.",
-    },
-    {
-      id: 2,
-      icon: "account_tree",
-      title: "Architecture",
-      description:
-        "Structuring the user journey, data logic, and system blueprint.",
-    },
-    {
-      id: 3,
-      icon: "format_paint",
-      title: "Design",
-      description: "Crafting high-fidelity UI with pixel-perfect precision.",
-    },
-    {
-      id: 4,
-      icon: "terminal",
-      title: "Development",
-      description:
-        "Clean, scalable code using modern frameworks and best practices.",
-    },
-    {
-      id: 5,
-      icon: "rocket_launch",
-      title: "Launch",
-      description:
-        "Quality assurance, performance tuning, and global deployment.",
-    },
-  ];
+  const steps = PROCESS_STEPS;
 
   return (
-    <section className="relative w-full py-20 px-6 md:px-10 lg:px-20 bg-gradient-to-b from-blue-50 via-indigo-50 to-blue-100 border-b border-blue-200">
+    <section
+      id="process"
+      className="relative w-full pt-20 md:pt-40 px-6 md:px-10 lg:px-0 bg-linear-to-b from-blue-50 via-indigo-50 to-blue-100 border-b border-blue-200"
+    >
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
         style={{
@@ -57,15 +26,8 @@ export default function Process() {
         transition={{ duration: 0.5 }}
         className="relative z-10 mx-auto max-w-[960px] text-center mb-20"
       >
-        <div className="inline-flex items-center justify-center px-3 py-1 mb-6 border border-primary/30 rounded-full bg-primary/10">
-          <span className="text-primary text-xs font-bold uppercase tracking-widest">
-            Systematic Workflow
-          </span>
-        </div>
-        <h1 className="text-slate-900 text-4xl md:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
-          THE PROCESS
-        </h1>
-        <p className="text-slate-600 text-lg md:text-xl font-normal leading-relaxed max-w-2xl mx-auto">
+        <h1 className="heading-section mb-6">Our Workflow</h1>
+        <p className="body-large max-w-2xl mx-auto">
           From initial concept to global deployment. We follow a rigorous,
           data-driven methodology to ensure digital excellence at every step.
         </p>
@@ -81,7 +43,7 @@ export default function Process() {
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
             className="absolute top-[2.5rem] left-[10%] w-[80%] h-[2px] bg-blue-200 z-0 origin-left"
           >
-            <div className="h-full w-full bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-50"></div>
+            <div className="h-full w-full bg-linear-to-r from-transparent via-primary/50 to-transparent opacity-50"></div>
           </motion.div>
 
           <div className="grid grid-cols-5 gap-4 relative z-10">
@@ -102,17 +64,15 @@ export default function Process() {
                   <span className="material-symbols-outlined text-slate-400 text-3xl group-hover:text-primary transition-colors duration-300">
                     {step.icon}
                   </span>
-                  <div className="absolute -top-3 -right-3 size-6 rounded-full bg-white border border-blue-200 flex items-center justify-center text-xs font-bold text-slate-400 group-hover:text-primary group-hover:border-primary transition-colors">
+                  <div className="absolute -top-3 -right-3 size-6 rounded-full bg-white border border-blue-200 flex items-center justify-center caption font-bold text-slate-400 group-hover:text-primary group-hover:border-primary transition-colors">
                     {step.id}
                   </div>
                 </div>
                 <div className="mt-8 px-2">
-                  <h3 className="text-slate-900 text-lg font-bold uppercase tracking-wide group-hover:text-primary transition-colors">
+                  <h3 className="heading-card uppercase tracking-wide group-hover:text-primary transition-colors">
                     {step.title}
                   </h3>
-                  <p className="mt-3 text-slate-600 text-sm leading-relaxed">
-                    {step.description}
-                  </p>
+                  <p className="body-small mt-3">{step.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -140,28 +100,50 @@ export default function Process() {
                 </span>
               </div>
               <div>
-                <h3 className="text-slate-900 text-lg font-bold uppercase tracking-wide group-hover:text-primary transition-colors">
+                <h3 className="heading-card uppercase tracking-wide group-hover:text-primary transition-colors">
                   {step.title}
                 </h3>
-                <p className="mt-2 text-slate-600 text-sm">{step.description}</p>
+                <p className="body-small mt-2">{step.description}</p>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-20 flex justify-center">
-          <div className="p-[1px] bg-gradient-to-r from-transparent via-blue-300 to-transparent w-full max-w-2xl"></div>
-        </div>
-
-        <div className="mt-12 text-center">
-          <button className="inline-flex items-center justify-center h-12 px-8 rounded bg-primary text-white text-base font-bold tracking-wide hover:bg-blue-600 transition-all shadow-lg hover:shadow-primary/20">
-            Start Your Project
-            <span className="material-symbols-outlined ml-2 text-lg">
-              arrow_forward
-            </span>
-          </button>
-        </div>
       </div>
+
+      {/* CTA Section */}
+      <section className="w-full flex justify-center mt-10 md:mt-50 py-30 px-6 lg:px-10 border-t border-blue-200/60 bg-linear-to-r from-primary to-purple-600">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+          className="max-w-200 w-full flex flex-col items-center text-center gap-8"
+        >
+          <div className="flex flex-col gap-3">
+            <h2 className="heading-major text-white">
+              Ready to elevate your digital presence?
+            </h2>
+            <p className="body-large-inverse">
+              Let&apos;s build something exceptional together. Book a technical
+              consultation today.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
+            <a
+              href="/rfq"
+              className="button-text-large flex min-w-40 cursor-pointer items-center justify-center bg-white text-primary h-12 px-8 hover:bg-blue-50 hover:shadow-lg transition-all duration-300 z-50"
+            >
+              Start a Project
+            </a>
+            <a
+              href="#work"
+              className="button-text-large flex min-w-40 cursor-pointer items-center justify-center border-2 border-white/40 bg-white/10 text-white h-12 px-8 hover:bg-white/20 transition-colors backdrop-blur-sm"
+            >
+              View Portfolio
+            </a>
+          </div>
+        </motion.div>
+      </section>
     </section>
   );
 }

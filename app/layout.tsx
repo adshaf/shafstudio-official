@@ -15,8 +15,9 @@ const notoSans = Noto_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "TechFlow - Engineering Digital Excellence",
-  description: "We blend technical precision with creative strategy to build web applications that scale. Your vision, architected for the future.",
+  title: "Shafstudio - Hassle-free Web Design & Development Service",
+  description:
+    "We make it our mission to design and build a website that truly reflects your brand. Your vision, how you envisioned it.",
 };
 
 export default function RootLayout({
