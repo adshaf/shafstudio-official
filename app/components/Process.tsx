@@ -24,16 +24,16 @@ export default function Process() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5 }}
-        className="relative z-10 mx-auto max-w-[960px] text-center mb-20"
+        className="relative z-10 mx-auto max-w-240 text-center mb-20"
       >
-        <h1 className="heading-section mb-6">Our Workflow</h1>
+        <h1 className="heading-section mb-6">Our workflow</h1>
         <p className="body-large max-w-2xl mx-auto">
           From initial concept to global deployment. We follow a rigorous,
           data-driven methodology to ensure digital excellence at every step.
         </p>
       </motion.div>
 
-      <div className="mx-auto max-w-[1280px]">
+      <div className="mx-auto max-w-7xl">
         {/* Desktop Timeline */}
         <div className="relative mt-12 hidden lg:block">
           <motion.div
@@ -41,7 +41,7 @@ export default function Process() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-            className="absolute top-[2.5rem] left-[10%] w-[80%] h-[2px] bg-blue-200 z-0 origin-left"
+            className="absolute top-10 left-[10%] w-[80%] h-0.5 bg-blue-200 z-0 origin-left"
           >
             <div className="h-full w-full bg-linear-to-r from-transparent via-primary/50 to-transparent opacity-50"></div>
           </motion.div>
@@ -120,7 +120,7 @@ export default function Process() {
           className="max-w-200 w-full flex flex-col items-center text-center gap-8"
         >
           <div className="flex flex-col gap-3">
-            <h2 className="heading-major text-white">
+            <h2 className="heading-major-inverse">
               Ready to elevate your digital presence?
             </h2>
             <p className="body-large-inverse">
@@ -136,10 +136,10 @@ export default function Process() {
               Start a Project
             </a>
             <a
-              href="#work"
+              href="#"
               className="button-text-large flex min-w-40 cursor-pointer items-center justify-center border-2 border-white/40 bg-white/10 text-white h-12 px-8 hover:bg-white/20 transition-colors backdrop-blur-sm"
             >
-              View Portfolio
+              Schedule a chat for free
             </a>
           </div>
         </motion.div>

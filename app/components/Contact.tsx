@@ -117,7 +117,7 @@ function ContactForm() {
         </span>
         <input
           className="w-full h-14 bg-white/70 text-slate-900 border border-slate-300 px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 rounded-none placeholder:text-slate-400"
-          placeholder="Project Inquiry"
+          placeholder="Project Enquiry"
           type="text"
           name="subject"
           value={formData.subject}
@@ -132,7 +132,7 @@ function ContactForm() {
           Message
         </span>
         <textarea
-          className="w-full min-h-[160px] resize-y bg-white/70 text-slate-900 border border-slate-300 px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 rounded-none placeholder:text-slate-400"
+          className="w-full min-h-40 resize-y bg-white/70 text-slate-900 border border-slate-300 px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 rounded-none placeholder:text-slate-400"
           placeholder="Describe your project requirements..."
           name="message"
           value={formData.message}
@@ -158,7 +158,7 @@ function ContactForm() {
 
       <div className="pt-2">
         <button
-          className="w-full md:w-auto px-10 h-14 bg-primary text-white button-text-standard hover:bg-slate-900 hover:text-white transition-all duration-300 rounded-none flex items-center justify-center gap-3 group border border-transparent hover:border-slate-900 shadow-lg shadow-primary/20 hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full md:w-auto px-10 h-14 bg-primary text-white button-text-standard hover:bg-blue-800 hover:text-white transition-all duration-300 rounded-none flex items-center justify-center gap-3 group border border-transparent hover:border-slate-900 shadow-lg shadow-primary/20 hover:shadow-none disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
           type="submit"
           disabled={isSubmitting}
         >
@@ -206,8 +206,8 @@ export default function Contact() {
       id="contact"
       className="relative bg-linear-to-br from-[#e0e7ff] via-[#ede9fe] to-[#e0e7ff] text-[#1e293b] font-display overflow-hidden py-20 md:py-40"
     >
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div className="absolute top-0 right-0 w-125 h-125 bg-primary/10 rounded-full blur-[120px] pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-75 h-75 bg-purple-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
       <div className="relative z-10 flex items-center justify-center p-6 md:p-12 lg:p-24">
         <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20">
@@ -260,10 +260,10 @@ export default function Contact() {
           {/* Right Column - Contact Form */}
           <div className="lg:col-span-7 flex flex-col justify-center">
             <div className="bg-white/40 backdrop-blur-md p-8 md:p-12 border border-white/50 shadow-xl shadow-indigo-100/40 relative w-full">
-              <div className="absolute -top-[1px] -left-[1px] w-6 h-6 border-t-2 border-l-2 border-primary"></div>
-              <div className="absolute -top-[1px] -right-[1px] w-6 h-6 border-t-2 border-r-2 border-primary"></div>
-              <div className="absolute -bottom-[1px] -left-[1px] w-6 h-6 border-b-2 border-l-2 border-primary"></div>
-              <div className="absolute -bottom-[1px] -right-[1px] w-6 h-6 border-b-2 border-r-2 border-primary"></div>
+              <div className="absolute -top-px -left-px w-6 h-6 border-t-2 border-l-2 border-primary"></div>
+              <div className="absolute -top-px -right-px w-6 h-6 border-t-2 border-r-2 border-primary"></div>
+              <div className="absolute -bottom-px -left-px w-6 h-6 border-b-2 border-l-2 border-primary"></div>
+              <div className="absolute -bottom-px -right-px w-6 h-6 border-b-2 border-r-2 border-primary"></div>
 
               <GoogleReCaptchaProvider
                 reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ""}

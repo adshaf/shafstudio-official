@@ -67,15 +67,7 @@ export default function Testimonials() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="flex flex-col gap-2 mb-12 border-l-4 border-primary pl-6"
               >
-                <div className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-primary"></span>
-                  <p className="label-uppercase">
-                    Feedback
-                  </p>
-                </div>
-                <h2 className="heading-major">
-                  Client Success
-                </h2>
+                <h2 className="heading-major">Client Success</h2>
                 <p className="body-large mt-2 max-w-2xl">
                   Don&apos;t just take our word for it - here&apos;s what our
                   previous clients say about working with us.

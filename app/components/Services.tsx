@@ -21,7 +21,7 @@ export default function Services() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="heading-section"
           >
-            What We Bring to the Table
+            What we bring to the table
           </motion.h1>
 
           <motion.p

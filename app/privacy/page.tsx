@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
     <div className="relative flex flex-col min-h-screen w-full bg-[#f6f7f8] text-slate-900 font-display overflow-x-hidden antialiased selection:bg-primary selection:text-white">
       <Header />
 
-      <main className="relative flex-grow pt-32 pb-20 px-6 md:px-10 lg:px-20">
+      <main className="relative grow pt-32 pb-20 px-6 md:px-10 lg:px-20">
         <div className="absolute inset-0 bg-tech-grid pointer-events-none opacity-40"></div>
 
         <div className="relative z-10 mx-auto max-w-4xl">
@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
               Policy
             </h1>
             <div className="flex items-center gap-4">
-              <span className="w-12 h-[1px] bg-primary"></span>
+              <span className="w-12 h-px bg-primary"></span>
               <p className="label-standard text-slate-500 uppercase tracking-widest">
                 Last updated: January 2026
               </p>
@@ -47,9 +47,9 @@ export default function PrivacyPolicyPage() {
               <div className="space-y-4 body-standard text-slate-700 leading-relaxed">
                 <p>
                   Shafstudio ("we", "our", or "us") is committed to protecting
-                  your privacy. This Privacy Policy explains how we collect, use,
-                  and store personal information when you visit our website or
-                  engage with our services.
+                  your privacy. This Privacy Policy explains how we collect,
+                  use, and store personal information when you visit our website
+                  or engage with our services.
                 </p>
               </div>
             </section>
@@ -61,8 +61,8 @@ export default function PrivacyPolicyPage() {
               </h2>
               <div className="space-y-4 body-standard text-slate-700 leading-relaxed">
                 <p>
-                  We may collect personal information that you voluntarily provide
-                  to us, including:
+                  We may collect personal information that you voluntarily
+                  provide to us, including:
                 </p>
                 <ul className="list-none space-y-3">
                   <li className="flex items-start gap-3">
@@ -135,10 +135,10 @@ export default function PrivacyPolicyPage() {
                 Analytics & Cookies
               </h2>
               <p className="body-standard text-slate-700 leading-relaxed">
-                Our website may use cookies and third-party analytics tools (such
-                as Google Analytics) to understand how visitors use our site. This
-                helps us improve performance and usability. You can disable
-                cookies through your browser settings if you prefer.
+                Our website may use cookies and third-party analytics tools
+                (such as Google Analytics) to understand how visitors use our
+                site. This helps us improve performance and usability. You can
+                disable cookies through your browser settings if you prefer.
               </p>
             </section>
 
@@ -149,9 +149,9 @@ export default function PrivacyPolicyPage() {
               </h2>
               <p className="body-standard text-slate-700 leading-relaxed">
                 We do not sell, rent, or trade your personal information. Your
-                data may only be shared with trusted third-party service providers
-                where necessary to operate our website or deliver our services,
-                and only where appropriate safeguards are in place.
+                data may only be shared with trusted third-party service
+                providers where necessary to operate our website or deliver our
+                services, and only where appropriate safeguards are in place.
               </p>
             </section>
 
@@ -161,9 +161,10 @@ export default function PrivacyPolicyPage() {
                 Data Storage & Security
               </h2>
               <p className="body-standard text-slate-700 leading-relaxed">
-                We take reasonable steps to protect your personal information from
-                misuse, loss, unauthorised access, or disclosure. However, no
-                method of online transmission or storage is completely secure.
+                We take reasonable steps to protect your personal information
+                from misuse, loss, unauthorised access, or disclosure. However,
+                no method of online transmission or storage is completely
+                secure.
               </p>
             </section>
 
@@ -185,8 +186,9 @@ export default function PrivacyPolicyPage() {
                 Third-Party Links
               </h2>
               <p className="body-standard text-slate-700 leading-relaxed">
-                Our website may contain links to third-party websites. We are not
-                responsible for the privacy practices or content of those sites.
+                Our website may contain links to third-party websites. We are
+                not responsible for the privacy practices or content of those
+                sites.
               </p>
             </section>
 
@@ -208,8 +210,8 @@ export default function PrivacyPolicyPage() {
               </h2>
               <div className="space-y-2 body-standard text-slate-700 leading-relaxed">
                 <p>
-                  If you have any questions about this Privacy Policy or how your
-                  information is handled, you can contact us at:
+                  If you have any questions about this Privacy Policy or how
+                  your information is handled, you can contact us at:
                 </p>
                 <p className="font-semibold">Shafstudio</p>
                 <p>

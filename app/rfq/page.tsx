@@ -177,6 +177,7 @@ function RFQForm() {
           <option value="personal-website">Personal Website</option>
           <option value="ecommerce-website">E-commerce Website</option>
           <option value="saas-website">SaaS Website</option>
+          <option value="other">Other</option>
         </select>
       </div>
 

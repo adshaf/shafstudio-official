@@ -7,7 +7,7 @@ export default function SloganSection() {
     <section className="relative flex py-30 w-full flex-col items-center justify-center overflow-hidden bg-linear-to-r from-blue-300 via-indigo-200 to-purple-300">
       <div className="absolute inset-0 tech-grid z-0"></div>
       <div className="absolute inset-0 scanline z-0 opacity-40"></div>
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-200 bg-primary/10 blur-[120px] rounded-full pointer-events-none z-0"></div>
 
       <div className="absolute top-6 left-6 md:top-12 md:left-12 z-10 hidden sm:flex flex-col gap-1">
         <div className="flex items-center gap-2">
@@ -16,7 +16,7 @@ export default function SloganSection() {
             SYS.STATUS: ONLINE
           </span>
         </div>
-        <div className="h-[1px] w-24 bg-primary/40"></div>
+        <div className="h-px w-24 bg-primary/40"></div>
       </div>
 
       <div className="absolute top-6 right-6 md:top-12 md:right-12 z-10 hidden sm:block text-right">
@@ -46,10 +46,10 @@ export default function SloganSection() {
         </div>
       </div>
 
-      <div className="absolute left-12 top-0 bottom-0 w-[1px] bg-slate-900/5 hidden xl:block"></div>
-      <div className="absolute right-12 top-0 bottom-0 w-[1px] bg-slate-900/5 hidden xl:block"></div>
+      <div className="absolute left-12 top-0 bottom-0 w-px bg-slate-900/5 hidden xl:block"></div>
+      <div className="absolute right-12 top-0 bottom-0 w-px bg-slate-900/5 hidden xl:block"></div>
 
-      <div className="layout-content-container relative z-10 flex flex-col items-center max-w-[1200px] px-4 md:px-8 w-full">
+      <div className="layout-content-container relative z-10 flex flex-col items-center max-w-300 px-4 md:px-8 w-full">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,7 @@ export default function SloganSection() {
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               className="block"
             >
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-purple-600">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600">
                 stress-free
               </span>
             </motion.span>
@@ -107,7 +107,7 @@ export default function SloganSection() {
           whileInView={{ opacity: 1, scaleX: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="w-full max-w-[200px] h-[2px] bg-white mb-8 relative overflow-hidden rounded-none"
+          className="w-full max-w-50 h-0.5 bg-white mb-8 relative overflow-hidden rounded-none"
         >
           <div className="absolute inset-0 bg-primary w-full h-full -translate-x-full animate-[shimmer_2s_infinite]"></div>
         </motion.div>
@@ -117,7 +117,7 @@ export default function SloganSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-[720px] mx-auto text-center"
+          className="max-w-180 mx-auto text-center"
         >
           <p className="body-large">
             We believe building a website should be a{" "}

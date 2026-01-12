@@ -199,6 +199,14 @@ body {
     color: #0f172a;
   }
 
+  .heading-major-inverse {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: var(--font-space-grotesk), sans-serif;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+  }
   @media (min-width: 768px) {
     .heading-major {
       font-size: 3rem;

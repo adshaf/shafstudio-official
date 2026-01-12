@@ -66,9 +66,9 @@ export default function ProjectsPage() {
   return (
     <section className="bg-white text-slate-900 font-display min-h-screen flex flex-col">
       <Header />
-      <div className="relative flex flex-col flex-grow w-full mt-20">
+      <div className="relative flex flex-col grow w-full mt-20">
         <div className="absolute inset-0 bg-tech-grid pointer-events-none z-0"></div>
-        <div className="layout-container flex flex-col w-full items-center py-12 md:py-20 px-4 md:px-10 lg:px-20 relative z-10 flex-grow">
+        <div className="layout-container flex flex-col w-full items-center py-12 md:py-20 px-4 md:px-10 lg:px-20 relative z-10 grow">
           <div className="layout-content-container flex flex-col max-w-7xl w-full z-10">
             {/* Header */}
             <motion.div
@@ -78,17 +78,6 @@ export default function ProjectsPage() {
               className="flex flex-col md:flex-row justify-between items-start lg:items-end mb-12 border-b border-slate-200 pb-6"
             >
               <div className="flex flex-col gap-2">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                  className="flex items-center gap-2 mb-1"
-                >
-                  <span className="w-2 h-2 bg-primary"></span>
-                  <p className="label-uppercase tracking-[0.2em]">
-                    Archive
-                  </p>
-                </motion.div>
                 <motion.h2
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -108,8 +97,8 @@ export default function ProjectsPage() {
                 className="flex flex-col items-end gap-2 mt-6 md:mt-0"
               >
                 <p className="body-standard text-slate-600 max-w-sm text-left md:text-right font-light leading-relaxed">
-                  A comprehensive look at our engineering journey. Explore the
-                  interfaces that have defined our standard of excellence.
+                  An overview of our web development journey, showcasing the
+                  experiences that shape our standard.
                 </p>
                 <div className="flex gap-2">
                   <span className="caption text-slate-400">
@@ -202,7 +191,7 @@ export default function ProjectsPage() {
                       onClick={() => setCurrentPage(page as number)}
                       className={`w-10 h-10 flex items-center justify-center caption font-bold transition-colors ${
                         currentPage === page
-                          ? "bg-primary text-white tech-clip-br"
+                          ? "bg-transparent border-2 border-primary text-primary"
                           : "bg-transparent border border-slate-200 text-slate-600 hover:bg-slate-100"
                       }`}
                     >

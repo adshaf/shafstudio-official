@@ -56,17 +56,14 @@ export default function Header() {
             className="flex items-center text-slate-900 relative"
             onClick={handleLogoClick}
           >
-            <div className="flex h-20 w-20 items-center justify-center relative">
+            <div className="flex h-20 w-50 items-center justify-center relative hover:scale-105 transition ease-in-out">
               <Image
-                src="/assets/images/Logo-coloured-no-bg.png"
+                src="/assets/images/logo-coloured-no-bg.png"
                 alt="shafstudio logo"
                 fill
                 className="object-cover"
               />
             </div>
-            <span className="text-3xl text-transparent bg-clip-text bg-linear-to-r from-primary to-purple-600 absolute top-6 left-17">
-              shafstudio
-            </span>
           </Link>
           <nav className="hidden md:flex items-center gap-10">
             <Link
@@ -77,15 +74,15 @@ export default function Header() {
             </Link>
             <Link
               className="link-nav"
-              href={pathname === "/" ? "#services" : "/#services"}
-            >
-              Services
-            </Link>
-            <Link
-              className="link-nav"
               href={pathname === "/" ? "#work" : "/#work"}
             >
               Work
+            </Link>
+            <Link
+              className="link-nav"
+              href={pathname === "/" ? "#services" : "/#services"}
+            >
+              Services
             </Link>
             <Link
               className="link-nav"

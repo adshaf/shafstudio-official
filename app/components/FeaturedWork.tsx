@@ -12,10 +12,10 @@ export default function FeaturedWork() {
       id="work"
       className="bg-white text-slate-900 font-display overflow-x-hidden min-h-screen flex flex-col"
     >
-      <div className="relative flex flex-col flex-grow w-full">
+      <div className="relative flex flex-col grow w-full">
         <div className="absolute inset-0 bg-tech-grid pointer-events-none z-0"></div>
-        <div className="layout-container flex flex-col w-full items-center py-12 md:py-40 px-4 md:px-10 lg:px-20 relative z-10 flex-grow">
-          <div className="layout-content-container flex flex-col max-w-[1280px] w-full z-10">
+        <div className="layout-container flex flex-col w-full items-center py-12 md:py-40 px-4 md:px-10 lg:px-20 relative z-10 grow">
+          <div className="layout-content-container flex flex-col max-w-7xl w-full z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -24,12 +24,6 @@ export default function FeaturedWork() {
               className="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-slate-200 pb-6"
             >
               <div className="flex flex-col gap-2">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="w-2 h-2 bg-primary"></span>
-                  <p className="label-uppercase">
-                    Selected_Works
-                  </p>
-                </div>
                 <h2 className="heading-section uppercase">
                   Featured{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-blue-400">
@@ -42,7 +36,7 @@ export default function FeaturedWork() {
                   Our goal is to strike the right balance between visual appeal,
                   functionality, and staying true to your brand.
                 </p>
-                <p className="body-large text-blue-600 max-w-sm text-left md:text-right mt-6 md:mt-0 leading-relaxed font-semibold italic tracking-wide">
+                <p className="body-large max-w-sm text-left md:text-right mt-6 md:mt-0 leading-relaxed font-semibold italic tracking-wide">
                   Explore the Result Below.
                 </p>
               </div>
@@ -64,7 +58,7 @@ export default function FeaturedWork() {
                       delay: 0.15 * index,
                       ease: "easeOut",
                     }}
-                    className={`group relative w-full aspect-[16/10] bg-indigo-50 ${project.clipClass} overflow-hidden cursor-pointer shadow-sm`}
+                    className={`group relative w-full aspect-16/10 bg-indigo-50 ${project.clipClass} overflow-hidden cursor-pointer shadow-sm`}
                   >
                     <div
                       className="absolute inset-0 bg-cover bg-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -74,7 +68,7 @@ export default function FeaturedWork() {
                     <div className="absolute bottom-0 left-0 w-full py-8 px-11 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
                       <div className="flex justify-between items-center border-l-2 border-primary pl-4">
                         <div>
-                          <h3 className="heading-standard-inverse uppercase">
+                          <h3 className="heading-major-inverse uppercase">
                             {project.title}
                           </h3>
                         </div>
@@ -93,12 +87,12 @@ export default function FeaturedWork() {
             <div className="flex justify-center w-full">
               <Link
                 href="/projects"
-                className="group relative flex items-center justify-center h-14 w-full md:w-auto md:min-w-[260px] bg-transparent text-slate-800 button-text-large hover:bg-slate-900/5 transition-all duration-300 cursor-pointer"
+                className="group relative flex items-center justify-center h-14 w-full md:w-auto md:min-w-65 bg-transparent text-slate-800 button-text-large hover:bg-slate-900/5 transition-all duration-300 cursor-pointer"
               >
-                <span className="absolute top-0 left-0 w-full h-[1px] bg-slate-300"></span>
-                <span className="absolute bottom-0 left-0 w-full h-[1px] bg-slate-300"></span>
-                <span className="absolute top-0 left-0 h-full w-[1px] bg-slate-300"></span>
-                <span className="absolute top-0 right-0 h-full w-[1px] bg-slate-300"></span>
+                <span className="absolute top-0 left-0 w-full h-px bg-slate-300"></span>
+                <span className="absolute bottom-0 left-0 w-full h-px bg-slate-300"></span>
+                <span className="absolute top-0 left-0 h-full w-px bg-slate-300"></span>
+                <span className="absolute top-0 right-0 h-full w-px bg-slate-300"></span>
                 <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-primary"></span>
                 <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-primary"></span>
                 <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-primary"></span>

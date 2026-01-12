@@ -18,9 +18,7 @@ export default function Hero() {
             className="heading-hero mb-8 max-w-4xl"
           >
             Creating Websites <br className="hidden lg:block" />
-            <span className="text-gradient-primary">
-              You Remember
-            </span>
+            <span className="text-gradient-primary">You Remember</span>
           </motion.h1>
 
           <motion.p
@@ -41,7 +39,7 @@ export default function Hero() {
           >
             <Link
               href="/rfq"
-              className="button-text-large flex h-12 w-full sm:w-auto min-w-[170px] items-center justify-center gap-2 rounded bg-primary px-8 text-white transition-all hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
+              className="button-text-large flex h-12 w-full sm:w-auto min-w-42.5 items-center justify-center gap-2 rounded bg-primary px-8 text-white transition-all hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
             >
               <span>Request Quote</span>
               <span className="material-symbols-outlined text-lg">
@@ -50,7 +48,7 @@ export default function Hero() {
             </Link>
             <a
               href="#work"
-              className="button-text-large flex h-12 w-full sm:w-auto min-w-[170px] items-center justify-center rounded border border-slate-300 bg-transparent px-8 text-slate-700 transition-all hover:bg-white hover:border-slate-400 hover:shadow-md backdrop-blur-sm"
+              className="button-text-large flex h-12 w-full sm:w-auto min-w-42.5 items-center justify-center rounded border border-slate-300 bg-transparent px-8 text-slate-700 transition-all hover:bg-white hover:border-slate-400 hover:shadow-md backdrop-blur-sm"
             >
               Our Work
             </a>

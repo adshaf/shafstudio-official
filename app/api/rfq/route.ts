@@ -53,6 +53,7 @@ function formatProjectType(value: string): string {
     "personal-website": "Personal Website",
     "ecommerce-website": "E-commerce Website",
     "saas-website": "SaaS Website",
+    "other": "Other",
   };
   return types[value] || value;
 }

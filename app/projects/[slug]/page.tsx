@@ -72,23 +72,12 @@ export default function ProjectDetailsPage({
                     </p>
                   </div>
                   <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tighter text-slate-900 leading-[0.9]">
-                    {project.title.split(" ")[0]} <br />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">
+                    {project.title.split(" ")[0]}{" "}
+                    <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-blue-400">
                       {project.title.split(" ").slice(1).join(" ") ||
                         project.title.split(" ")[0]}
                     </span>
                   </h1>
-                </div>
-                <div className="flex flex-col items-start md:items-end gap-3">
-                  <div className="flex gap-2">
-                    <span className="px-3 py-1 border border-primary/30 text-primary text-xs font-mono bg-blue-50/50">
-                      {project.category.toUpperCase()}
-                    </span>
-                  </div>
-                  <p className="text-slate-500 text-sm md:text-right max-w-xs">
-                    {project.description ||
-                      "A cutting-edge digital solution crafted with precision and technical excellence."}
-                  </p>
                 </div>
               </motion.div>
             </div>
@@ -100,7 +89,7 @@ export default function ProjectDetailsPage({
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
               className="w-full mb-16 relative group"
             >
-              <div className="w-full aspect-video md:aspect-[21/9] bg-indigo-50 tech-clip-br overflow-hidden relative shadow-lg">
+              <div className="w-full aspect-video md:aspect-21/9 bg-indigo-50 tech-clip-br overflow-hidden relative shadow-lg">
                 <Image
                   src={project.image}
                   alt={project.title}
@@ -109,7 +98,7 @@ export default function ProjectDetailsPage({
                   sizes="(max-width: 1280px) 100vw, 1280px"
                   priority
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 to-transparent"></div>
+                <div className="absolute inset-0 bg-linear-to-t from-blue-900/40 to-transparent"></div>
               </div>
               <div className="flex justify-between mt-2 text-[10px] font-mono text-slate-400 uppercase tracking-widest">
                 <span>Fig. 01 — Project Overview</span>
@@ -189,8 +178,8 @@ export default function ProjectDetailsPage({
               {/* Main Content */}
               <div className="lg:col-span-8 flex flex-col gap-8">
                 <h3 className="text-2xl md:text-3xl font-bold leading-tight">
-                  {project.description ? (
-                    project.description
+                  {project.subheading ? (
+                    project.subheading
                   ) : (
                     <>
                       Delivering exceptional digital experiences through{" "}
@@ -201,7 +190,7 @@ export default function ProjectDetailsPage({
                 </h3>
                 <div className="prose prose-slate max-w-none text-slate-600 font-body leading-relaxed space-y-4">
                   <p>
-                    {project.solution ||
+                    {project.description ||
                       "Our approach focused on creating a seamless user experience while maintaining the highest standards of performance and accessibility. Through careful planning and iterative design, we delivered a solution that exceeds expectations."}
                   </p>
                 </div>
@@ -216,7 +205,7 @@ export default function ProjectDetailsPage({
               className="w-full mb-24"
             >
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="group relative bg-gradient-to-b from-blue-50 to-transparent p-8 border-t-4 border-primary hover:bg-blue-50/80 transition-colors">
+                <div className="group relative bg-linear-to-b from-blue-50 to-transparent p-8 border-t-4 border-primary hover:bg-blue-50/80 transition-colors">
                   <div className="absolute top-0 right-0 w-8 h-8 border-l border-b border-slate-200"></div>
                   <div className="mb-6 w-12 h-12 bg-blue-100 text-primary flex items-center justify-center rounded-sm">
                     <span className="material-symbols-outlined">
@@ -231,7 +220,7 @@ export default function ProjectDetailsPage({
                       "Creating a solution that balances functionality with elegant design while meeting strict performance requirements."}
                   </p>
                 </div>
-                <div className="group relative bg-gradient-to-b from-purple-50 to-transparent p-8 border-t-4 border-purple-500 hover:bg-purple-50/80 transition-colors">
+                <div className="group relative bg-linear-to-b from-purple-50 to-transparent p-8 border-t-4 border-purple-500 hover:bg-purple-50/80 transition-colors">
                   <div className="absolute top-0 right-0 w-8 h-8 border-l border-b border-slate-200"></div>
                   <div className="mb-6 w-12 h-12 bg-purple-100 text-purple-600 flex items-center justify-center rounded-sm">
                     <span className="material-symbols-outlined">grid_view</span>
@@ -244,7 +233,7 @@ export default function ProjectDetailsPage({
                       "We implemented modern technologies and best practices to deliver a robust, scalable solution tailored to client needs."}
                   </p>
                 </div>
-                <div className="group relative bg-gradient-to-b from-emerald-50 to-transparent p-8 border-t-4 border-emerald-500 hover:bg-emerald-50/80 transition-colors">
+                <div className="group relative bg-linear-to-b from-emerald-50 to-transparent p-8 border-t-4 border-emerald-500 hover:bg-emerald-50/80 transition-colors">
                   <div className="absolute top-0 right-0 w-8 h-8 border-l border-b border-slate-200"></div>
                   <div className="mb-6 w-12 h-12 bg-emerald-100 text-emerald-600 flex items-center justify-center rounded-sm">
                     <span className="material-symbols-outlined">
@@ -255,7 +244,7 @@ export default function ProjectDetailsPage({
                     The Result
                   </h4>
                   <p className="text-sm text-slate-600 leading-relaxed">
-                    {project.results?.[0] ||
+                    {project.results ||
                       "Successfully delivered a high-performance solution that exceeded client expectations and user satisfaction metrics."}
                   </p>
                 </div>

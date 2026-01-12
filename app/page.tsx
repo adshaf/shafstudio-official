@@ -30,9 +30,9 @@ export default function Home() {
       <SloganSection />
       <TeamSection />
       <FeaturedWork />
-      <Testimonials />
       <Services />
       <Process />
+      <Testimonials />
       <Contact />
       <Footer />
     </div>
