@@ -1,29 +1,36 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  contactClientSchema,
+  type ContactClientFormData,
+} from "@/lib/validations/contact";
 import { CONTACT_INFO } from "@/app/constants";
 
 function ContactForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    subject: "",
-    message: "",
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<ContactClientFormData>({
+    resolver: zodResolver(contactClientSchema),
+    mode: "onBlur",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const [submitStatus, setSubmitStatus] = useState<{
     type: "success" | "error" | null;
     message: string;
   }>({ type: null, message: "" });
 
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
+  const onSubmit = async (data: ContactClientFormData) => {
     if (!executeRecaptcha) {
       setSubmitStatus({
         type: "error",
@@ -32,7 +39,6 @@ function ContactForm() {
       return;
     }
 
-    setIsSubmitting(true);
     setSubmitStatus({ type: null, message: "" });
 
     try {
@@ -46,25 +52,24 @@ function ContactForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          message: `Subject: ${formData.subject}\n\n${formData.message}`,
+          ...data,
           recaptchaToken,
         }),
       });
 
-      const data = await response.json();
+      const responseData = await response.json();
 
       if (response.ok) {
         setSubmitStatus({
           type: "success",
           message: "Message sent successfully! We'll get back to you soon.",
         });
-        setFormData({ name: "", email: "", subject: "", message: "" });
+        reset();
       } else {
         setSubmitStatus({
           type: "error",
-          message: data.error || "Failed to send message. Please try again.",
+          message:
+            responseData.error || "Failed to send message. Please try again.",
         });
       }
     } catch {
@@ -72,43 +77,47 @@ function ContactForm() {
         type: "error",
         message: "An unexpected error occurred. Please try again later.",
       });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
   return (
-    <form className="flex flex-col gap-6" onSubmit={handleSubmit}>
+    <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <label className="flex flex-col gap-2 group">
           <span className="label-uppercase text-slate-500 group-focus-within:text-primary transition-colors">
             Name
           </span>
           <input
-            className="w-full h-14 bg-white/70 text-slate-900 border border-slate-300 px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 rounded-none placeholder:text-slate-400"
+            {...register("name")}
+            className={`w-full h-14 bg-white/70 text-slate-900 border px-4 py-3 focus:outline-none transition-all duration-300 rounded-none placeholder:text-slate-400 ${
+              errors.name
+                ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                : "border-slate-300 focus:border-primary focus:ring-1 focus:ring-primary"
+            }`}
             placeholder="Your Name"
             type="text"
-            name="name"
-            value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-            required
           />
+          {errors.name && (
+            <p className="caption text-red-600">{errors.name.message}</p>
+          )}
         </label>
         <label className="flex flex-col gap-2 group">
           <span className="label-uppercase text-slate-500 group-focus-within:text-primary transition-colors">
             Email
           </span>
           <input
-            className="w-full h-14 bg-white/70 text-slate-900 border border-slate-300 px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 rounded-none placeholder:text-slate-400"
+            {...register("email")}
+            className={`w-full h-14 bg-white/70 text-slate-900 border px-4 py-3 focus:outline-none transition-all duration-300 rounded-none placeholder:text-slate-400 ${
+              errors.email
+                ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+                : "border-slate-300 focus:border-primary focus:ring-1 focus:ring-primary"
+            }`}
             placeholder="your@email.com"
             type="email"
-            name="email"
-            value={formData.email}
-            onChange={(e) =>
-              setFormData({ ...formData, email: e.target.value })
-            }
-            required
           />
+          {errors.email && (
+            <p className="caption text-red-600">{errors.email.message}</p>
+          )}
         </label>
       </div>
       <label className="flex flex-col gap-2 group">
@@ -116,31 +125,35 @@ function ContactForm() {
           Subject
         </span>
         <input
-          className="w-full h-14 bg-white/70 text-slate-900 border border-slate-300 px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 rounded-none placeholder:text-slate-400"
+          {...register("subject")}
+          className={`w-full h-14 bg-white/70 text-slate-900 border px-4 py-3 focus:outline-none transition-all duration-300 rounded-none placeholder:text-slate-400 ${
+            errors.subject
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary focus:ring-1 focus:ring-primary"
+          }`}
           placeholder="Project Enquiry"
           type="text"
-          name="subject"
-          value={formData.subject}
-          onChange={(e) =>
-            setFormData({ ...formData, subject: e.target.value })
-          }
-          required
         />
+        {errors.subject && (
+          <p className="caption text-red-600">{errors.subject.message}</p>
+        )}
       </label>
       <label className="flex flex-col gap-2 group">
         <span className="label-uppercase text-slate-500 group-focus-within:text-primary transition-colors">
           Message
         </span>
         <textarea
-          className="w-full min-h-40 resize-y bg-white/70 text-slate-900 border border-slate-300 px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-300 rounded-none placeholder:text-slate-400"
+          {...register("message")}
+          className={`w-full min-h-40 resize-y bg-white/70 text-slate-900 border px-4 py-3 focus:outline-none transition-all duration-300 rounded-none placeholder:text-slate-400 ${
+            errors.message
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary focus:ring-1 focus:ring-primary"
+          }`}
           placeholder="Describe your project requirements..."
-          name="message"
-          value={formData.message}
-          onChange={(e) =>
-            setFormData({ ...formData, message: e.target.value })
-          }
-          required
         ></textarea>
+        {errors.message && (
+          <p className="caption text-red-600">{errors.message.message}</p>
+        )}
       </label>
 
       {/* Status Messages */}
@@ -173,7 +186,7 @@ function ContactForm() {
       </div>
 
       {/* reCAPTCHA Badge Notice */}
-      <p className="caption mt-2">
+      <p className="caption text-slate-600 mt-2">
         This site is protected by reCAPTCHA and the Google{" "}
         <a
           href="https://policies.google.com/privacy"

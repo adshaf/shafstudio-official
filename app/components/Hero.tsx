@@ -38,7 +38,7 @@ export default function Hero() {
             className="flex flex-col w-full sm:w-auto sm:flex-row gap-4 justify-center"
           >
             <Link
-              href="/rfq"
+              href="/request-for-quotation"
               className="button-text-large flex h-12 w-full sm:w-auto min-w-42.5 items-center justify-center gap-2 rounded bg-primary px-8 text-white transition-all hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
             >
               <span>Request Quote</span>

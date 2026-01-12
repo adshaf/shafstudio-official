@@ -1,17 +1,9 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { rfqSchema } from "@/lib/validations/rfq";
+import { ZodError } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-interface RFQFormData {
-  fullName: string;
-  companyName: string;
-  email: string;
-  projectType: string;
-  budget: string;
-  projectBrief: string;
-  recaptchaToken: string;
-}
 
 // Verify reCAPTCHA token with Google
 async function verifyRecaptcha(token: string): Promise<boolean> {
@@ -71,7 +63,27 @@ function formatBudget(value: string): string {
 
 export async function POST(request: NextRequest) {
   try {
-    const body: RFQFormData = await request.json();
+    const body = await request.json();
+
+    // Validate request body with Zod
+    const validationResult = rfqSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      const errors = validationResult.error.issues.map((err) => ({
+        field: err.path.join("."),
+        message: err.message,
+      }));
+
+      return NextResponse.json(
+        {
+          error: "Validation failed",
+          details: errors,
+          message: errors[0]?.message || "Please check your input and try again."
+        },
+        { status: 400 }
+      );
+    }
+
     const {
       fullName,
       companyName,
@@ -80,22 +92,7 @@ export async function POST(request: NextRequest) {
       budget,
       projectBrief,
       recaptchaToken,
-    } = body;
-
-    // Validate required fields
-    if (
-      !fullName ||
-      !email ||
-      !projectType ||
-      !budget ||
-      !projectBrief ||
-      !recaptchaToken
-    ) {
-      return NextResponse.json(
-        { error: "All required fields must be filled" },
-        { status: 400 }
-      );
-    }
+    } = validationResult.data;
 
     // Verify reCAPTCHA token
     const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);

@@ -6,28 +6,30 @@ import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { rfqClientSchema, type RFQClientFormData } from "@/lib/validations/rfq";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 function RFQForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
-  const [formData, setFormData] = useState({
-    fullName: "",
-    companyName: "",
-    email: "",
-    projectType: "",
-    budget: "",
-    projectBrief: "",
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isSubmitting },
+  } = useForm<RFQClientFormData>({
+    resolver: zodResolver(rfqClientSchema),
+    mode: "onBlur",
   });
 
   const [submitStatus, setSubmitStatus] = useState<{
-    type: "idle" | "submitting" | "success" | "error";
+    type: "idle" | "success" | "error";
     message: string;
   }>({ type: "idle", message: "" });
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const onSubmit = async (data: RFQClientFormData) => {
     if (!executeRecaptcha) {
       setSubmitStatus({
         type: "error",
@@ -36,7 +38,7 @@ function RFQForm() {
       return;
     }
 
-    setSubmitStatus({ type: "submitting", message: "" });
+    setSubmitStatus({ type: "idle", message: "" });
 
     try {
       // Execute reCAPTCHA to get token
@@ -49,12 +51,12 @@ function RFQForm() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          ...formData,
+          ...data,
           recaptchaToken,
         }),
       });
 
-      const data = await response.json();
+      const responseData = await response.json();
 
       if (response.ok) {
         setSubmitStatus({
@@ -62,18 +64,11 @@ function RFQForm() {
           message:
             "Thank you! We've received your request and will get back to you within 24-48 hours.",
         });
-        setFormData({
-          fullName: "",
-          companyName: "",
-          email: "",
-          projectType: "",
-          budget: "",
-          projectBrief: "",
-        });
+        reset();
       } else {
         setSubmitStatus({
           type: "error",
-          message: data.error || "Failed to submit request. Please try again.",
+          message: responseData.message || responseData.error || "Failed to submit request. Please try again.",
         });
       }
     } catch {
@@ -84,19 +79,8 @@ function RFQForm() {
     }
   };
 
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
       {/* Full Name */}
       <div>
         <label
@@ -108,13 +92,17 @@ function RFQForm() {
         <input
           type="text"
           id="fullName"
-          name="fullName"
-          value={formData.fullName}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-slate-300 bg-slate-50 focus:bg-white focus:border-primary focus:outline-none transition-all"
+          {...register("fullName")}
+          className={`w-full px-4 py-3 border bg-slate-50 focus:bg-white focus:outline-none transition-all ${
+            errors.fullName
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary"
+          }`}
           placeholder="John Doe"
         />
+        {errors.fullName && (
+          <p className="mt-1 caption text-red-600">{errors.fullName.message}</p>
+        )}
       </div>
 
       {/* Company Name */}
@@ -128,12 +116,17 @@ function RFQForm() {
         <input
           type="text"
           id="companyName"
-          name="companyName"
-          value={formData.companyName}
-          onChange={handleChange}
-          className="w-full px-4 py-3 border border-slate-300 bg-slate-50 focus:bg-white focus:border-primary focus:outline-none transition-all"
+          {...register("companyName")}
+          className={`w-full px-4 py-3 border bg-slate-50 focus:bg-white focus:outline-none transition-all ${
+            errors.companyName
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary"
+          }`}
           placeholder="Your Company LLC"
         />
+        {errors.companyName && (
+          <p className="mt-1 caption text-red-600">{errors.companyName.message}</p>
+        )}
       </div>
 
       {/* Email */}
@@ -147,13 +140,17 @@ function RFQForm() {
         <input
           type="email"
           id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-slate-300 bg-slate-50 focus:bg-white focus:border-primary focus:outline-none transition-all"
+          {...register("email")}
+          className={`w-full px-4 py-3 border bg-slate-50 focus:bg-white focus:outline-none transition-all ${
+            errors.email
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary"
+          }`}
           placeholder="john@example.com"
         />
+        {errors.email && (
+          <p className="mt-1 caption text-red-600">{errors.email.message}</p>
+        )}
       </div>
 
       {/* Project Type */}
@@ -166,11 +163,12 @@ function RFQForm() {
         </label>
         <select
           id="projectType"
-          name="projectType"
-          value={formData.projectType}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-slate-300 bg-slate-50 focus:bg-white focus:border-primary focus:outline-none transition-all cursor-pointer"
+          {...register("projectType")}
+          className={`w-full px-4 py-3 border bg-slate-50 focus:bg-white focus:outline-none transition-all cursor-pointer ${
+            errors.projectType
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary"
+          }`}
         >
           <option value="">Select project type</option>
           <option value="marketing-website">Marketing Website</option>
@@ -179,6 +177,9 @@ function RFQForm() {
           <option value="saas-website">SaaS Website</option>
           <option value="other">Other</option>
         </select>
+        {errors.projectType && (
+          <p className="mt-1 caption text-red-600">{errors.projectType.message}</p>
+        )}
       </div>
 
       {/* Budget Range */}
@@ -191,11 +192,12 @@ function RFQForm() {
         </label>
         <select
           id="budget"
-          name="budget"
-          value={formData.budget}
-          onChange={handleChange}
-          required
-          className="w-full px-4 py-3 border border-slate-300 bg-slate-50 focus:bg-white focus:border-primary focus:outline-none transition-all cursor-pointer"
+          {...register("budget")}
+          className={`w-full px-4 py-3 border bg-slate-50 focus:bg-white focus:outline-none transition-all cursor-pointer ${
+            errors.budget
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary"
+          }`}
         >
           <option value="">Select budget range</option>
           <option value="1400-2999">$1,400 - $2,999</option>
@@ -203,6 +205,9 @@ function RFQForm() {
           <option value="7000-10000">$7,000 - $10,000</option>
           <option value="10000+">$10,000+</option>
         </select>
+        {errors.budget && (
+          <p className="mt-1 caption text-red-600">{errors.budget.message}</p>
+        )}
       </div>
 
       {/* Project Brief */}
@@ -215,33 +220,37 @@ function RFQForm() {
         </label>
         <textarea
           id="projectBrief"
-          name="projectBrief"
-          value={formData.projectBrief}
-          onChange={handleChange}
-          required
+          {...register("projectBrief")}
           rows={6}
-          className="w-full px-4 py-3 border border-slate-300 bg-slate-50 focus:bg-white focus:border-primary focus:outline-none transition-all resize-none"
+          className={`w-full px-4 py-3 border bg-slate-50 focus:bg-white focus:outline-none transition-all resize-none ${
+            errors.projectBrief
+              ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
+              : "border-slate-300 focus:border-primary"
+          }`}
           placeholder="Tell us about your project goals, timeline, and any specific requirements..."
         />
+        {errors.projectBrief && (
+          <p className="mt-1 caption text-red-600">{errors.projectBrief.message}</p>
+        )}
       </div>
 
       {/* Submit Button */}
       <div className="pt-4">
         <button
           type="submit"
-          disabled={submitStatus.type === "submitting"}
+          disabled={isSubmitting}
           className="w-full relative overflow-hidden group bg-primary hover:bg-blue-600 text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <div className="absolute inset-0 w-0 bg-blue-600 transition-all duration-300 ease-out group-hover:w-full"></div>
           <div className="relative flex items-center justify-center gap-3 px-8 py-4">
             <span className="button-text-standard">
-              {submitStatus.type === "submitting"
+              {isSubmitting
                 ? "Submitting..."
                 : submitStatus.type === "success"
                 ? "Submitted Successfully!"
                 : "Submit Request"}
             </span>
-            {submitStatus.type !== "submitting" && (
+            {!isSubmitting && (
               <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
                 arrow_forward
               </span>
@@ -251,7 +260,7 @@ function RFQForm() {
       </div>
 
       {/* Status Messages */}
-      {submitStatus.type !== "idle" && submitStatus.type !== "submitting" && (
+      {submitStatus.type !== "idle" && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}

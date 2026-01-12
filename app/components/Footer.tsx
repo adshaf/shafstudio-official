@@ -45,7 +45,7 @@ export default function Footer() {
           {/* Copyright */}
           <div className="flex items-center gap-2 order-2 md:order-1">
             <span className="w-1 h-1 bg-primary"></span>
-            <p className="caption">
+            <p className="caption text-slate-600">
               © {new Date().getFullYear()} Shafstudio. All rights reserved.
             </p>
           </div>

@@ -9,7 +9,7 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="relative w-full pt-20 md:pt-40 px-6 md:px-10 lg:px-0 bg-linear-to-b from-blue-50 via-indigo-50 to-blue-100 border-b border-blue-200"
+      className="relative w-full pt-20 md:pt-30 px-6 md:px-10 lg:px-0 bg-linear-to-b from-blue-50 via-indigo-50 to-blue-100 border-b border-blue-200"
     >
       <div
         className="absolute inset-0 opacity-20 pointer-events-none"
@@ -28,7 +28,7 @@ export default function Process() {
       >
         <h1 className="heading-section mb-6">Our workflow</h1>
         <p className="body-large max-w-2xl mx-auto">
-          From initial concept to global deployment. We follow a rigorous,
+          From initial concept to global deployment - we follow a rigorous,
           data-driven methodology to ensure digital excellence at every step.
         </p>
       </motion.div>
@@ -111,7 +111,7 @@ export default function Process() {
       </div>
 
       {/* CTA Section */}
-      <section className="w-full flex justify-center mt-10 md:mt-50 py-30 px-6 lg:px-10 border-t border-blue-200/60 bg-linear-to-r from-primary to-purple-600">
+      <section className="w-full flex justify-center mt-10 md:mt-30 py-30 px-6 lg:px-10 border-t border-blue-200/60 bg-linear-to-r from-primary to-purple-600">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -130,7 +130,7 @@ export default function Process() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 w-full justify-center">
             <a
-              href="/rfq"
+              href="/request-for-quotation"
               className="button-text-large flex min-w-40 cursor-pointer items-center justify-center bg-white text-primary h-12 px-8 hover:bg-blue-50 hover:shadow-lg transition-all duration-300 z-50"
             >
               Start a Project

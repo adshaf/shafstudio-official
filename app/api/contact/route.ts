@@ -1,14 +1,8 @@
 import { Resend } from "resend";
 import { NextRequest, NextResponse } from "next/server";
+import { contactSchema } from "@/lib/validations/contact";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-
-interface ContactFormData {
-  name: string;
-  email: string;
-  message: string;
-  recaptchaToken: string;
-}
 
 // Verify reCAPTCHA token with Google
 async function verifyRecaptcha(token: string): Promise<boolean> {
@@ -45,16 +39,28 @@ async function verifyRecaptcha(token: string): Promise<boolean> {
 
 export async function POST(request: NextRequest) {
   try {
-    const body: ContactFormData = await request.json();
-    const { name, email, message, recaptchaToken } = body;
+    const body = await request.json();
 
-    // Validate required fields
-    if (!name || !email || !message || !recaptchaToken) {
+    // Validate request body with Zod
+    const validationResult = contactSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      const errors = validationResult.error.issues.map((err) => ({
+        field: err.path.join("."),
+        message: err.message,
+      }));
+
       return NextResponse.json(
-        { error: "All fields are required" },
+        {
+          error: "Validation failed",
+          details: errors,
+          message: errors[0]?.message || "Please check your input and try again."
+        },
         { status: 400 }
       );
     }
+
+    const { name, email, subject, message, recaptchaToken } = validationResult.data;
 
     // Verify reCAPTCHA token
     const isValidRecaptcha = await verifyRecaptcha(recaptchaToken);
@@ -69,7 +75,7 @@ export async function POST(request: NextRequest) {
     const { data, error } = await resend.emails.send({
       from: "Shafstudio Contact Form <onboarding@resend.dev>",
       to: ["ad.shafstudio@gmail.com"],
-      subject: `New Contact Form Submission from ${name}`,
+      subject: `${subject} - ${name}`,
       replyTo: email,
       html: `
         <!DOCTYPE html>

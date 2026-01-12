@@ -70,7 +70,7 @@ export default function TeamSection() {
                 </p>
               </div>
               <div className="flex flex-col gap-3">
-                <p className="caption uppercase mb-1">Core Competencies_</p>
+                <p className="caption text-slate-600 uppercase mb-1">Core Competencies_</p>
                 <div className="flex flex-wrap gap-2">
                   <div className="group flex items-center justify-center border border-slate-300 bg-[#eef2ff] px-4 py-2 hover:border-primary hover:bg-primary/5 transition-colors cursor-default">
                     <p className="button-text-standard text-slate-700 group-hover:text-primary">

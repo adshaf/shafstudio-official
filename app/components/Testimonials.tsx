@@ -58,7 +58,7 @@ export default function Testimonials() {
     >
       <div className="relative flex h-auto w-full flex-col group/design-root">
         <main className="layout-container flex h-full grow flex-col items-center justify-center">
-          <div className="px-6 md:px-20 lg:px-40 flex flex-1 justify-center items-center py-20 md:py-40 w-full">
+          <div className="px-6 md:px-20 lg:px-40 flex flex-1 justify-center items-center py-20 md:py-30 w-full">
             <div className="layout-content-container flex flex-col max-w-7xl w-full">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -67,7 +67,7 @@ export default function Testimonials() {
                 transition={{ duration: 0.6, ease: "easeOut" }}
                 className="flex flex-col gap-2 mb-12 border-l-4 border-primary pl-6"
               >
-                <h2 className="heading-major">Client Success</h2>
+                <h2 className="heading-major">Client success</h2>
                 <p className="body-large mt-2 max-w-2xl">
                   Don&apos;t just take our word for it - here&apos;s what our
                   previous clients say about working with us.
@@ -80,7 +80,7 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-                className="relative mb-16"
+                className="relative"
               >
                 <div className="overflow-hidden" ref={emblaRef}>
                   <div className="flex -ml-8">

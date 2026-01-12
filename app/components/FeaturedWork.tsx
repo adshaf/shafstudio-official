@@ -10,11 +10,11 @@ export default function FeaturedWork() {
   return (
     <section
       id="work"
-      className="bg-white text-slate-900 font-display overflow-x-hidden min-h-screen flex flex-col"
+      className="bg-white text-slate-900 font-display overflow-x-hidden flex flex-col"
     >
       <div className="relative flex flex-col grow w-full">
         <div className="absolute inset-0 bg-tech-grid pointer-events-none z-0"></div>
-        <div className="layout-container flex flex-col w-full items-center py-12 md:py-40 px-4 md:px-10 lg:px-20 relative z-10 grow">
+        <div className="layout-container flex flex-col w-full items-center py-12 md:py-30 px-4 md:px-10 lg:px-20 relative z-10 grow">
           <div className="layout-content-container flex flex-col max-w-7xl w-full z-10">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -35,9 +35,6 @@ export default function FeaturedWork() {
                 <p className="body-standard max-w-sm text-left md:text-right mt-6 md:mt-0">
                   Our goal is to strike the right balance between visual appeal,
                   functionality, and staying true to your brand.
-                </p>
-                <p className="body-large max-w-sm text-left md:text-right mt-6 md:mt-0 leading-relaxed font-semibold italic tracking-wide">
-                  Explore the Result Below.
                 </p>
               </div>
             </motion.div>
