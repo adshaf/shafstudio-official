@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { PopupModal } from "react-calendly";
 import { PROCESS_STEPS } from "@/app/constants";
 
 export default function Process() {
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   const steps = PROCESS_STEPS;
 
   return (
@@ -124,7 +127,7 @@ export default function Process() {
               Ready to elevate your digital presence?
             </h2>
             <p className="body-large-inverse">
-              Let&apos;s build something exceptional together. Book a technical
+              Let&apos;s build something exceptional together. Book a free 10min
               consultation today.
             </p>
           </div>
@@ -135,14 +138,24 @@ export default function Process() {
             >
               Start a Project
             </a>
-            <a
-              href="#"
+            <button
+              onClick={() => setIsCalendlyOpen(true)}
               className="button-text-large flex min-w-40 cursor-pointer items-center justify-center border-2 border-white/40 bg-white/10 text-white h-12 px-8 hover:bg-white/20 transition-colors backdrop-blur-sm"
             >
-              Schedule a chat for free
-            </a>
+              Free Consultation
+            </button>
           </div>
         </motion.div>
+
+        {/* Calendly Modal */}
+        {typeof document !== "undefined" && (
+          <PopupModal
+            url={process.env.NEXT_PUBLIC_CALENDLY_URL || ""}
+            onModalClose={() => setIsCalendlyOpen(false)}
+            open={isCalendlyOpen}
+            rootElement={document.body}
+          />
+        )}
       </section>
     </section>
   );

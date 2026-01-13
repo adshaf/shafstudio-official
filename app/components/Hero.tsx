@@ -1,9 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { PopupModal } from "react-calendly";
 
 export default function Hero() {
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
   return (
     <section
       id="home"
@@ -46,13 +49,27 @@ export default function Hero() {
                 arrow_forward
               </span>
             </Link>
-            <a
-              href="#work"
-              className="button-text-large flex h-12 w-full sm:w-auto min-w-42.5 items-center justify-center rounded border border-slate-300 bg-transparent px-8 text-slate-700 transition-all hover:bg-white hover:border-slate-400 hover:shadow-md backdrop-blur-sm"
+            <button
+              onClick={() => setIsCalendlyOpen(true)}
+              className="button-text-large flex h-12 w-full sm:w-auto min-w-42.5 items-center justify-center gap-2 rounded border-2 border-primary bg-white px-8 text-primary transition-all hover:bg-primary hover:text-white hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden group"
             >
-              Our Work
-            </a>
+              <span className="relative z-10">Free Consultation</span>
+              <span className="material-symbols-outlined text-lg relative z-10">
+                calendar_today
+              </span>
+              <span className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
+            </button>
           </motion.div>
+
+          {/* Calendly Modal */}
+          {typeof document !== "undefined" && (
+            <PopupModal
+              url={process.env.NEXT_PUBLIC_CALENDLY_URL || ""}
+              onModalClose={() => setIsCalendlyOpen(false)}
+              open={isCalendlyOpen}
+              rootElement={document.body}
+            />
+          )}
 
           {/* FOR THE FUTURE - ADD SECTION FOR LOGOS OF COMPANIES WE HAVE WORKED WITH HERE */}
           {/* <motion.div
