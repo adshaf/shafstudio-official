@@ -1,8 +1,10 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import { m } from "./LazyMotion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Icon from "./Icon";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -25,7 +27,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       {isOpen && (
         <>
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -35,7 +37,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           />
 
           {/* Menu Panel */}
-          <motion.div
+          <m.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -52,9 +54,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 className="flex items-center justify-center w-10 h-10 hover:bg-slate-100 transition-colors rounded"
                 aria-label="Close menu"
               >
-                <span className="material-symbols-outlined text-slate-900">
-                  close
-                </span>
+                <Icon name="close" className="text-slate-900" size={24} />
               </button>
             </div>
 
@@ -62,7 +62,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <nav className="flex-1 px-6 py-8">
               <ul className="flex flex-col gap-2">
                 {menuItems.map((item, index) => (
-                  <motion.li
+                  <m.li
                     key={item.label}
                     initial={{ opacity: 0, x: 50 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -78,17 +78,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       onClick={onClose}
                     >
                       {item.label}
-                      <span className="material-symbols-outlined text-sm opacity-0 group-hover:opacity-100 transition-opacity">
-                        arrow_forward
-                      </span>
+                      <Icon name="arrow_forward" size={14} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
-                  </motion.li>
+                  </m.li>
                 ))}
               </ul>
             </nav>
 
             {/* Footer CTA */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.3, delay: 0.4 }}
@@ -100,12 +98,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 className="w-full flex items-center justify-center gap-2 bg-primary text-white px-6 py-3 button-text-standard hover:bg-blue-600 transition-colors shadow-lg shadow-primary/20"
               >
                 Got questions?
-                <span className="material-symbols-outlined text-sm">
-                  arrow_forward
-                </span>
+                <Icon name="arrow_forward" size={14} />
               </Link>
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </>
       )}
     </AnimatePresence>

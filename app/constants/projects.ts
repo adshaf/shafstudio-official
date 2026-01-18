@@ -24,6 +24,7 @@ export const PROJECTS: Project[] = [
     clipClass: "tech-clip-br",
     slug: "by-lia-makeup",
     isFeatured: true,
+    link: "https://by-lia-makeup.vercel.app",
     subheading: "Delivering a refined digital presence for a bridal makeup artist, designed to reflect elegance, trust, and attention to detail.",
     description: "Our approach focused on creating a seamless, intuitive experience for brides, making it easy to explore services, view portfolios, and enquire with confidence. Through thoughtful design and careful planning, we delivered a website that supports bookings while showcasing the artistry behind every look",
     challenge: "The client needed a website that felt professional and luxurious while remaining warm and approachable. It was important to clearly showcase bridal work, build trust with potential clients, and provide an easy way for brides to enquire without feeling overwhelmed.",

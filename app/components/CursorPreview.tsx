@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import { m } from "./LazyMotion";
 import Image from "next/image";
 
 interface CursorPreviewProps {
@@ -12,7 +13,7 @@ export default function CursorPreview({ imageUrl, position }: CursorPreviewProps
   return (
     <AnimatePresence>
       {imageUrl && (
-        <motion.div
+        <m.div
           className="fixed z-50 pointer-events-none hidden lg:block"
           style={{
             left: position.x + 20,
@@ -32,7 +33,7 @@ export default function CursorPreview({ imageUrl, position }: CursorPreviewProps
               sizes="256px"
             />
           </div>
-        </motion.div>
+        </m.div>
       )}
     </AnimatePresence>
   );

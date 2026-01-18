@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "./LazyMotion";
 import { SERVICES } from "@/app/constants";
+import Icon, { type IconName } from "./Icon";
 
 export default function Services() {
   const services = SERVICES;
@@ -14,7 +15,7 @@ export default function Services() {
       {/* Hero Section */}
       <div className="relative w-full flex flex-col items-center justify-center py-20 md:py-40 px-6 lg:px-10 border-b border-blue-200/60">
         <div className="max-w-240 w-full flex flex-col gap-6 text-center z-10">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -22,9 +23,9 @@ export default function Services() {
             className="heading-section"
           >
             What we bring to the table
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -33,7 +34,7 @@ export default function Services() {
           >
             We build digital experiences designed to scale - from thoughtful
             interfaces to systems that grow with your business.
-          </motion.p>
+          </m.p>
         </div>
 
         {/* Services Grid */}
@@ -41,7 +42,7 @@ export default function Services() {
           <div className="max-w-7xl w-full">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-200 border border-slate-200">
               {services.map((service, index) => (
-                <motion.div
+                <m.div
                   key={service.id}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -58,9 +59,7 @@ export default function Services() {
 
                   {/* Icon */}
                   <div className="w-12 h-12 flex items-center justify-center bg-blue-50 border border-blue-100 mb-2 text-primary group-hover:text-white group-hover:bg-primary group-hover:border-primary transition-colors">
-                    <span className="material-symbols-outlined text-[28px]">
-                      {service.icon}
-                    </span>
+                    <Icon name={service.icon as IconName} size={28} />
                   </div>
 
                   {/* Content */}
@@ -68,7 +67,7 @@ export default function Services() {
                     <h3 className="heading-card">{service.title}</h3>
                     <p className="body-small">{service.description}</p>
                   </div>
-                </motion.div>
+                </m.div>
               ))}
             </div>
           </div>

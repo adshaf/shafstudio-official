@@ -1,11 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m, MotionProvider } from "../components/LazyMotion";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
 export default function TermsPage() {
   return (
+    <MotionProvider>
     <div className="relative flex flex-col min-h-screen w-full bg-[#f6f7f8] text-slate-900 font-display overflow-x-hidden antialiased selection:bg-primary selection:text-white">
       <Header />
 
@@ -14,7 +15,7 @@ export default function TermsPage() {
 
         <div className="relative z-10 mx-auto max-w-4xl">
           {/* Header Section */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -33,10 +34,10 @@ export default function TermsPage() {
                 Last updated: January 2026
               </p>
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Content Section */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -193,11 +194,12 @@ export default function TermsPage() {
                 </a>
               </p>
             </section>
-          </motion.div>
+          </m.div>
         </div>
       </main>
 
       <Footer />
     </div>
+    </MotionProvider>
   );
 }

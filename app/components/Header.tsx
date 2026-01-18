@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
+import Icon from "./Icon";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
@@ -42,11 +42,9 @@ export default function Header() {
 
   return (
     <>
-      <motion.header
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-        className={`fixed top-0 left-0 right-0 z-50 w-full px-6 py-1 md:px-12 lg:px-20 border-b border-slate-900/5 backdrop-blur-sm transition-all duration-300 ${
+      {/* CSS animation for LCP optimization - header visible immediately */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 w-full px-6 py-1 md:px-12 lg:px-20 border-b border-slate-900/5 backdrop-blur-sm transition-all duration-300 animate-fade-in-down ${
           scrolled ? "bg-white/80" : "bg-white/0"
         }`}
       >
@@ -109,11 +107,11 @@ export default function Header() {
               onClick={() => setMobileMenuOpen(true)}
               aria-label="Open menu"
             >
-              <span className="material-symbols-outlined text-3xl">menu</span>
+              <Icon name="menu" size={30} />
             </button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <MobileMenu
         isOpen={mobileMenuOpen}

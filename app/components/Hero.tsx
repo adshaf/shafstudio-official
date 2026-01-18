@@ -1,9 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
-import { PopupModal } from "react-calendly";
+import dynamic from "next/dynamic";
+import Icon from "./Icon";
+
+// Lazy load Calendly modal - only loads when user opens it
+const PopupModal = dynamic(
+  () => import("react-calendly").then((mod) => mod.PopupModal),
+  { ssr: false }
+);
 
 export default function Hero() {
   const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
@@ -14,55 +20,38 @@ export default function Hero() {
     >
       <main className="relative flex flex-1 flex-col justify-center px-6 py-32 md:px-12 lg:px-20">
         <div className="mx-auto flex w-full max-w-5xl flex-col items-center text-center">
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="heading-hero mb-8 max-w-4xl"
-          >
-            Creating Websites <br className="hidden lg:block" />
-            <span className="text-gradient-primary">You Remember</span>
-          </motion.h1>
+          {/* CSS animations for LCP optimization - content visible immediately */}
+          <h1 className="heading-hero mb-8 max-w-4xl animate-fade-in-up">
+            Websites that <br className="hidden lg:block" />
+            <span className="text-gradient-primary">reflect your brand</span>
+          </h1>
 
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="body-large mb-12 max-w-2xl lg:max-w-3xl"
-          >
-            We make it our mission to design and build a website that truly
-            reflects your brand. Your vision, the way you envisioned it.
-          </motion.p>
+          <p className="body-large mb-12 max-w-2xl lg:max-w-3xl animate-fade-in-up animation-delay-100">
+            We create thoughtful, brand-aligned websites and manage the entire
+            build process end-to-end, so you can stay focused on what matters
+            most: running your business.
+          </p>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="flex flex-col w-full sm:w-auto sm:flex-row gap-4 justify-center"
-          >
+          <div className="flex flex-col w-full sm:w-auto sm:flex-row gap-4 justify-center animate-fade-in-up animation-delay-200">
             <Link
               href="/request-for-quotation"
               className="button-text-large flex h-12 w-full sm:w-auto min-w-42.5 items-center justify-center gap-2 rounded bg-primary px-8 text-white transition-all hover:bg-primary-dark hover:shadow-xl hover:shadow-primary/30 hover:-translate-y-0.5"
             >
               <span>Request Quote</span>
-              <span className="material-symbols-outlined text-lg">
-                arrow_forward
-              </span>
+              <Icon name="arrow_forward" size={18} />
             </Link>
             <button
               onClick={() => setIsCalendlyOpen(true)}
               className="button-text-large flex h-12 w-full sm:w-auto min-w-42.5 items-center justify-center gap-2 rounded border-2 border-primary bg-white px-8 text-primary transition-all hover:bg-primary hover:text-white hover:shadow-lg hover:-translate-y-0.5 relative overflow-hidden group"
             >
               <span className="relative z-10">Free Consultation</span>
-              <span className="material-symbols-outlined text-lg relative z-10">
-                calendar_today
-              </span>
+              <Icon name="calendar_today" size={18} className="relative z-10" />
               <span className="absolute inset-0 bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300"></span>
             </button>
-          </motion.div>
+          </div>
 
-          {/* Calendly Modal */}
-          {typeof document !== "undefined" && (
+          {/* Calendly Modal - dynamically imported with ssr: false */}
+          {isCalendlyOpen && (
             <PopupModal
               url={process.env.NEXT_PUBLIC_CALENDLY_URL || ""}
               onModalClose={() => setIsCalendlyOpen(false)}

@@ -1,9 +1,11 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "./LazyMotion";
 import { useCallback, useEffect, useState } from "react";
 import useEmblaCarousel from "embla-carousel-react";
+import Image from "next/image";
 import { TESTIMONIALS } from "@/app/constants";
+import Icon from "./Icon";
 
 export default function Testimonials() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -60,7 +62,7 @@ export default function Testimonials() {
         <main className="layout-container flex h-full grow flex-col items-center justify-center">
           <div className="px-6 md:px-20 lg:px-40 flex flex-1 justify-center items-center py-20 md:py-30 w-full">
             <div className="layout-content-container flex flex-col max-w-7xl w-full">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.35 }}
@@ -72,10 +74,10 @@ export default function Testimonials() {
                   Don&apos;t just take our word for it - here&apos;s what our
                   previous clients say about working with us.
                 </p>
-              </motion.div>
+              </m.div>
 
               {/* Carousel Container */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -96,9 +98,7 @@ export default function Testimonials() {
                           <div className="absolute bottom-0 right-0 w-2 h-2 border-r-2 border-b-2 border-primary/20 group-hover:border-primary transition-colors"></div>
 
                           <div className="mb-6 flex items-start justify-between">
-                            <span className="material-symbols-outlined text-4xl text-primary/80">
-                              format_quote
-                            </span>
+                            <Icon name="format_quote" size={36} className="text-primary/80" />
                             <div className="h-8 w-auto">
                               <div className="h-6 w-20 bg-linear-to-r from-blue-200 to-indigo-200 opacity-80 rounded-sm"></div>
                             </div>
@@ -109,12 +109,15 @@ export default function Testimonials() {
                           </p>
 
                           <div className="flex items-center gap-4 pt-6 border-t border-dashed border-blue-200 group-hover:border-primary/30 transition-colors">
-                            <div
-                              className="w-12 h-12 bg-cover bg-center bg-no-repeat rounded-sm shadow-sm"
-                              style={{
-                                backgroundImage: `url("${testimonial.image}")`,
-                              }}
-                            ></div>
+                            <div className="relative w-12 h-12 rounded-sm shadow-sm overflow-hidden">
+                              <Image
+                                src={testimonial.image}
+                                alt={testimonial.name}
+                                fill
+                                className="object-cover"
+                                sizes="48px"
+                              />
+                            </div>
                             <div>
                               <p className="heading-minor uppercase">
                                 {testimonial.name}
@@ -137,9 +140,7 @@ export default function Testimonials() {
                     className="flex items-center justify-center w-12 h-12 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Previous testimonials"
                   >
-                    <span className="material-symbols-outlined">
-                      chevron_left
-                    </span>
+                    <Icon name="chevron_left" size={24} />
                   </button>
 
                   {/* Dots Indicator */}
@@ -163,12 +164,10 @@ export default function Testimonials() {
                     className="flex items-center justify-center w-12 h-12 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Next testimonials"
                   >
-                    <span className="material-symbols-outlined">
-                      chevron_right
-                    </span>
+                    <Icon name="chevron_right" size={24} />
                   </button>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
           </div>
         </main>

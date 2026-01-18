@@ -1,12 +1,13 @@
 "use client";
 
 import { notFound } from "next/navigation";
-import { motion } from "framer-motion";
+import { m, MotionProvider } from "@/app/components/LazyMotion";
 import Link from "next/link";
 import Image from "next/image";
 import { use } from "react";
 import Header from "@/app/components/Header";
 import Footer from "@/app/components/Footer";
+import Icon from "@/app/components/Icon";
 import { getProjectBySlug, getRelatedProjects } from "@/app/constants";
 
 export default function ProjectDetailsPage({
@@ -24,6 +25,7 @@ export default function ProjectDetailsPage({
   const relatedProjects = getRelatedProjects(project.id, 3);
 
   return (
+    <MotionProvider>
     <div className="bg-[#f6f7f8] text-slate-900 font-display overflow-x-hidden min-h-screen flex flex-col">
       <Header />
 
@@ -33,7 +35,7 @@ export default function ProjectDetailsPage({
         <div className="layout-container flex flex-col w-full items-center py-12 md:py-20 px-4 md:px-10 lg:px-20 relative z-10 flex-grow">
           <div className="layout-content-container flex flex-col max-w-[1280px] w-full z-10">
             {/* Back Button */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -43,9 +45,7 @@ export default function ProjectDetailsPage({
                 href="/projects"
                 className="group flex items-center gap-2 text-xs md:text-sm font-bold uppercase tracking-widest text-slate-500 hover:text-primary transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-lg group-hover:-translate-x-1 transition-transform">
-                  arrow_back
-                </span>
+                <Icon name="arrow_back" size={18} className="group-hover:-translate-x-1 transition-transform" />
                 Back to Projects
               </Link>
               <div className="hidden md:flex items-center gap-2">
@@ -54,11 +54,11 @@ export default function ProjectDetailsPage({
                   Case_Study_{String(project.id).padStart(2, "0")}
                 </p>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Project Header */}
             <div className="flex flex-col gap-6 mb-10">
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
@@ -79,11 +79,11 @@ export default function ProjectDetailsPage({
                     </span>
                   </h1>
                 </div>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Hero Image */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
@@ -104,10 +104,10 @@ export default function ProjectDetailsPage({
                 <span>Fig. 01 — Project Overview</span>
                 <span>Scroll for details</span>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Project Content Grid */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.5, ease: "easeOut" }}
@@ -157,9 +157,7 @@ export default function ProjectDetailsPage({
                       className="flex-1 h-12 bg-primary text-white font-bold uppercase tracking-widest text-xs hover:bg-blue-600 transition-colors flex items-center justify-center gap-2"
                     >
                       Live Site{" "}
-                      <span className="material-symbols-outlined text-sm">
-                        arrow_outward
-                      </span>
+                      <Icon name="arrow_outward" size={14} />
                     </a>
                   ) : (
                     <button
@@ -167,9 +165,7 @@ export default function ProjectDetailsPage({
                       className="flex-1 h-12 bg-primary text-white font-bold uppercase tracking-widest text-xs hover:bg-blue-600 transition-colors flex items-center justify-center gap-2 opacity-50 cursor-not-allowed"
                     >
                       Live Site{" "}
-                      <span className="material-symbols-outlined text-sm">
-                        arrow_outward
-                      </span>
+                      <Icon name="arrow_outward" size={14} />
                     </button>
                   )}
                 </div>
@@ -195,10 +191,10 @@ export default function ProjectDetailsPage({
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Challenge, Solution, Results Cards */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.7, ease: "easeOut" }}
@@ -208,9 +204,7 @@ export default function ProjectDetailsPage({
                 <div className="group relative bg-linear-to-b from-blue-50 to-transparent p-8 border-t-4 border-primary hover:bg-blue-50/80 transition-colors">
                   <div className="absolute top-0 right-0 w-8 h-8 border-l border-b border-slate-200"></div>
                   <div className="mb-6 w-12 h-12 bg-blue-100 text-primary flex items-center justify-center rounded-sm">
-                    <span className="material-symbols-outlined">
-                      psychology
-                    </span>
+                    <Icon name="psychology" size={24} />
                   </div>
                   <h4 className="text-lg font-bold uppercase tracking-tight mb-3">
                     The Challenge
@@ -223,7 +217,7 @@ export default function ProjectDetailsPage({
                 <div className="group relative bg-linear-to-b from-purple-50 to-transparent p-8 border-t-4 border-purple-500 hover:bg-purple-50/80 transition-colors">
                   <div className="absolute top-0 right-0 w-8 h-8 border-l border-b border-slate-200"></div>
                   <div className="mb-6 w-12 h-12 bg-purple-100 text-purple-600 flex items-center justify-center rounded-sm">
-                    <span className="material-symbols-outlined">grid_view</span>
+                    <Icon name="grid_view" size={24} />
                   </div>
                   <h4 className="text-lg font-bold uppercase tracking-tight mb-3">
                     The Solution
@@ -236,9 +230,7 @@ export default function ProjectDetailsPage({
                 <div className="group relative bg-linear-to-b from-emerald-50 to-transparent p-8 border-t-4 border-emerald-500 hover:bg-emerald-50/80 transition-colors">
                   <div className="absolute top-0 right-0 w-8 h-8 border-l border-b border-slate-200"></div>
                   <div className="mb-6 w-12 h-12 bg-emerald-100 text-emerald-600 flex items-center justify-center rounded-sm">
-                    <span className="material-symbols-outlined">
-                      trending_up
-                    </span>
+                    <Icon name="trending_up" size={24} />
                   </div>
                   <h4 className="text-lg font-bold uppercase tracking-tight mb-3">
                     The Result
@@ -249,10 +241,10 @@ export default function ProjectDetailsPage({
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Related Projects */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.9, ease: "easeOut" }}
@@ -286,20 +278,19 @@ export default function ProjectDetailsPage({
                       </h3>
                       <div className="flex items-center gap-2 text-primary font-bold uppercase tracking-widest text-xs opacity-0 transform translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
                         View Project
-                        <span className="material-symbols-outlined text-sm">
-                          arrow_forward
-                        </span>
+                        <Icon name="arrow_forward" size={14} />
                       </div>
                     </div>
                   </Link>
                 ))}
               </div>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>
 
       <Footer />
     </div>
+    </MotionProvider>
   );
 }

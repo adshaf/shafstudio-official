@@ -2,7 +2,7 @@
 
 import { FOOTER_LINKS } from "@/app/constants";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "./LazyMotion";
 
 export default function Footer() {
   const links = FOOTER_LINKS;
@@ -16,7 +16,7 @@ export default function Footer() {
         {/* Top Section - Logo and Social */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-8 md:gap-4 border-b border-slate-200/60">
           {/* Logo */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -31,11 +31,11 @@ export default function Footer() {
                 className="object-cover object-left"
               />
             </div>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Bottom Section - Links and Copyright */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -63,7 +63,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-        </motion.div>
+        </m.div>
       </div>
 
       {/* Accent Line */}

@@ -12,6 +12,7 @@ import {
   type ContactClientFormData,
 } from "@/lib/validations/contact";
 import { CONTACT_INFO } from "@/app/constants";
+import Icon, { type IconName } from "./Icon";
 
 function ContactForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -149,7 +150,7 @@ function ContactForm() {
               ? "border-red-500 focus:border-red-500 focus:ring-2 focus:ring-red-200"
               : "border-slate-300 focus:border-primary focus:ring-1 focus:ring-primary"
           }`}
-          placeholder="Describe your project requirements..."
+          placeholder="Describe your project requirements or write your message here..."
         ></textarea>
         {errors.message && (
           <p className="caption text-red-600">{errors.message.message}</p>
@@ -176,12 +177,11 @@ function ContactForm() {
           disabled={isSubmitting}
         >
           {isSubmitting ? "Sending..." : "Send Message"}
-          <span
-            className="material-symbols-outlined group-hover:translate-x-1 transition-transform"
-            style={{ fontSize: "20px" }}
-          >
-            arrow_forward
-          </span>
+          <Icon
+            name="arrow_forward"
+            size={20}
+            className="group-hover:translate-x-1 transition-transform"
+          />
         </button>
       </div>
 
@@ -235,9 +235,7 @@ export default function Contact() {
                 <span className="text-primary">TOGETHER.</span>
               </h1>
               <p className="body-large text-slate-600 max-w-md">
-                Have a project in mind? We craft thoughtfully designed digital
-                experiences with care and technical precision. Get in touch
-                directly or via the form.
+                Have a project in mind? Get in touch directly or via the form.
               </p>
             </div>
 
@@ -250,12 +248,7 @@ export default function Contact() {
                   className="flex items-start gap-5 group cursor-pointer"
                 >
                   <div className="flex items-center justify-center w-12 h-12 bg-white/60 border border-[#cbd5e1] text-primary group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300 shadow-sm">
-                    <span
-                      className="material-symbols-outlined"
-                      style={{ fontSize: "24px" }}
-                    >
-                      {item.icon}
-                    </span>
+                    <Icon name={item.icon as IconName} size={24} />
                   </div>
                   <div>
                     <h3 className="label-uppercase text-slate-500 mb-1">

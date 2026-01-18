@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, Suspense } from "react";
+import { m, MotionProvider } from "../components/LazyMotion";
+import dynamic from "next/dynamic";
 import {
-  GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from "react-google-recaptcha-v3";
 import { useForm } from "react-hook-form";
@@ -11,6 +11,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { rfqClientSchema, type RFQClientFormData } from "@/lib/validations/rfq";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import Icon from "../components/Icon";
+
+// Lazy load the reCAPTCHA provider
+const GoogleReCaptchaProvider = dynamic(
+  () => import("react-google-recaptcha-v3").then((mod) => mod.GoogleReCaptchaProvider),
+  { ssr: false }
+);
 
 function RFQForm() {
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -251,9 +258,7 @@ function RFQForm() {
                 : "Submit Request"}
             </span>
             {!isSubmitting && (
-              <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
-                arrow_forward
-              </span>
+              <Icon name="arrow_forward" size={14} className="group-hover:translate-x-1 transition-transform" />
             )}
           </div>
         </button>
@@ -261,7 +266,7 @@ function RFQForm() {
 
       {/* Status Messages */}
       {submitStatus.type !== "idle" && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className={`p-4 border body-small ${
@@ -271,12 +276,10 @@ function RFQForm() {
           }`}
         >
           <div className="flex items-center gap-2">
-            <span className="material-symbols-outlined">
-              {submitStatus.type === "success" ? "check_circle" : "error"}
-            </span>
+            <Icon name={submitStatus.type === "success" ? "check_circle" : "error"} size={20} />
             <p className="font-medium">{submitStatus.message}</p>
           </div>
-        </motion.div>
+        </m.div>
       )}
 
       {/* reCAPTCHA Badge Notice */}
@@ -307,13 +310,14 @@ function RFQForm() {
 
 export default function RFQPage() {
   return (
+    <MotionProvider>
     <div className="relative flex flex-col min-h-screen w-full bg-[#f6f7f8] text-slate-900 font-display overflow-x-hidden antialiased selection:bg-primary selection:text-white">
       <Header />
 
       <main className="relative flex-grow pt-30 md:pt-40 pb-20 px-6 md:px-10 lg:px-20">
         <div className="absolute inset-0 bg-tech-grid pointer-events-none opacity-40"></div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -321,7 +325,7 @@ export default function RFQPage() {
         >
           {/* Header Section */}
           <div className="mb-12 text-center">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -332,16 +336,16 @@ export default function RFQPage() {
                 Get Started
               </span>
               <span className="w-8 h-[2px] bg-primary"></span>
-            </motion.div>
-            <motion.h1
+            </m.div>
+            <m.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
               className="heading-section mb-4"
             >
               Request for Quotation
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
@@ -349,11 +353,11 @@ export default function RFQPage() {
             >
               Tell us about your project and we'll get back to you with a
               detailed proposal tailored to your needs.
-            </motion.p>
+            </m.p>
           </div>
 
           {/* Form Container */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
@@ -375,11 +379,12 @@ export default function RFQPage() {
             >
               <RFQForm />
             </GoogleReCaptchaProvider>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </main>
 
       <Footer />
     </div>
+    </MotionProvider>
   );
 }

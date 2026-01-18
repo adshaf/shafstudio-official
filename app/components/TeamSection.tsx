@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "./LazyMotion";
+import Image from "next/image";
+import Icon from "./Icon";
 
 export default function TeamSection() {
   return (
@@ -10,7 +12,7 @@ export default function TeamSection() {
     >
       <div className="grow flex items-center justify-center p-4 md:p-10 lg:p-20 relative">
         <div className="absolute inset-0 tech-grid pointer-events-none"></div>
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
@@ -23,12 +25,14 @@ export default function TeamSection() {
           <div className="absolute -bottom-px -right-px w-6 h-6 border-r-2 border-b-2 border-primary z-20"></div>
 
           <div className="w-full lg:w-5/12 relative group min-h-100 lg:min-h-150 border-b lg:border-b-0 lg:border-r border-slate-300 overflow-hidden">
-            <div
-              className="absolute inset-0 bg-cover bg-center bg-black/50"
-              style={{
-                backgroundImage: "url('/assets/images/selfie.jpeg')",
-              }}
-            ></div>
+            <Image
+              src="/assets/images/selfie.jpeg"
+              alt="Adam Shafariansyah - Founder"
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              priority={false}
+            />
             <div className="absolute inset-0 bg-primary/20 mix-blend-overlay pointer-events-none"></div>
             <div className="absolute top-6 left-6 flex flex-col gap-1 z-10 pointer-events-none">
               <span className="caption text-white/90 tracking-widest bg-black/50 px-1 backdrop-blur-sm uppercase">
@@ -49,9 +53,7 @@ export default function TeamSection() {
                 </div>
                 <h1 className="heading-major">Adam Shafariansyah</h1>
               </div>
-              <span className="material-symbols-outlined text-indigo-200 text-5xl font-light opacity-60 select-none">
-                architecture
-              </span>
+              <Icon name="architecture" size={48} className="text-indigo-200 font-light opacity-60 select-none" />
             </div>
 
             <div className="p-8 lg:p-10 grow flex flex-col justify-center gap-8 bg-[#e0e7ff]">
@@ -111,14 +113,12 @@ export default function TeamSection() {
                 <div className="absolute inset-0 w-0 bg-primary transition-all duration-250 ease-out group-hover:w-full"></div>
                 <div className="relative flex items-center justify-center gap-3 px-8 py-3">
                   <span className="button-text-standard">Connect</span>
-                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
-                    arrow_forward
-                  </span>
+                  <Icon name="arrow_forward" size={14} className="group-hover:translate-x-1 transition-transform" />
                 </div>
               </a>
             </div>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

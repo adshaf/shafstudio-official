@@ -1,11 +1,12 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { m, MotionProvider } from "@/app/components/LazyMotion";
 import Link from "next/link";
 import { PROJECTS } from "@/app/constants";
 import CursorPreview from "@/app/components/CursorPreview";
 import Header from "../components/Header";
+import Icon from "../components/Icon";
 
 export default function ProjectsPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -64,6 +65,7 @@ export default function ProjectsPage() {
   };
 
   return (
+    <MotionProvider>
     <section className="bg-white text-slate-900 font-display min-h-screen flex flex-col">
       <Header />
       <div className="relative flex flex-col grow w-full mt-20">
@@ -71,14 +73,14 @@ export default function ProjectsPage() {
         <div className="layout-container flex flex-col w-full items-center py-12 md:py-20 px-4 md:px-10 lg:px-20 relative z-10 grow">
           <div className="layout-content-container flex flex-col max-w-7xl w-full z-10">
             {/* Header */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="flex flex-col md:flex-row justify-between items-start lg:items-end mb-12 border-b border-slate-200 pb-6"
             >
               <div className="flex flex-col gap-2">
-                <motion.h2
+                <m.h2
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
@@ -88,9 +90,9 @@ export default function ProjectsPage() {
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-blue-400">
                     Projects
                   </span>
-                </motion.h2>
+                </m.h2>
               </div>
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
@@ -106,8 +108,8 @@ export default function ProjectsPage() {
                     {Math.min(endIndex, PROJECTS.length)} OF {PROJECTS.length}
                   </span>
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
 
             {/* Projects List */}
             <div className="flex flex-col w-full mb-16 gap-2">
@@ -117,7 +119,7 @@ export default function ProjectsPage() {
                   href={`/projects/${project.slug}`}
                   className="block"
                 >
-                  <motion.div
+                  <m.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -147,18 +149,16 @@ export default function ProjectsPage() {
                         View Project
                       </span>
                       <div className="w-10 h-10 flex shrink-0 items-center justify-center border border-slate-200 text-slate-400 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
-                        <span className="material-symbols-outlined text-sm">
-                          arrow_outward
-                        </span>
+                        <Icon name="arrow_outward" size={14} />
                       </div>
                     </div>
-                  </motion.div>
+                  </m.div>
                 </Link>
               ))}
             </div>
 
             {/* Pagination */}
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.3, ease: "easeOut" }}
@@ -170,9 +170,7 @@ export default function ProjectsPage() {
                 className="group relative flex items-center justify-center h-12 px-6 bg-transparent text-slate-400 button-text-standard hover:text-slate-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <span className="relative z-10 flex items-center gap-3">
-                  <span className="material-symbols-outlined text-sm">
-                    arrow_back
-                  </span>
+                  <Icon name="arrow_back" size={14} />
                   Previous
                 </span>
               </button>
@@ -209,12 +207,10 @@ export default function ProjectsPage() {
               >
                 <span className="relative z-10 flex items-center gap-3">
                   Next
-                  <span className="material-symbols-outlined text-sm group-hover:translate-x-1 transition-transform">
-                    arrow_forward
-                  </span>
+                  <Icon name="arrow_forward" size={14} className="group-hover:translate-x-1 transition-transform" />
                 </span>
               </button>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </div>
@@ -222,5 +218,6 @@ export default function ProjectsPage() {
       {/* Cursor Preview */}
       <CursorPreview imageUrl={hoveredProject} position={mousePosition} />
     </section>
+    </MotionProvider>
   );
 }
