@@ -18,7 +18,7 @@ export interface Project {
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    category: "UI/UX",
+    category: "Beauty",
     title: "By Lia Makeup",
     image: "/assets/images/projects/byLiaMakeup-Hero.jpeg",
     clipClass: "tech-clip-br",
@@ -31,16 +31,16 @@ export const PROJECTS: Project[] = [
     solution: "We designed a clean, elegant website that highlights the client’s bridal portfolio and services. The layout was structured to guide users naturally through the content, with clear calls to action, mobile-friendly design, and a booking-focused enquiry flow tailored for brides.",
     results: "The final website delivers a polished, cohesive online presence that reflects the client’s brand and expertise. Brides can easily explore services, view past work, and get in touch, resulting in a smoother enquiry process and a stronger first impression."
   },
-  // {
-  //   id: 2,
-  //   category: "Web3",
-  //   title: "Apex Exchange",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuDNHXt40HMrgkYxpvdi0C4yslECp6bUntgSX2nhgy4kqkpl9n0jYraIvMWJnAJ_3BSrY-z_Osy0xgsSa1BYJVu_48RUoWWCMkh4pGBqagtMnhnSzOF3CxIBqugYOly3QiNeMV8E_t_1-l-OLxu-7nBQ5ocowSjYjUDzc5J8pHlASSx52zAHQEH5cAZQTGh1EhvLUoazF2PXwCtBV6ZETRRQgf1FFynctqngMhuLxQNLch6D70Efao-GjyEicrNgB6EaIQcTVuqeOIo",
-  //   clipClass: "tech-clip-bl",
-  //   slug: "apex-exchange",
-  //   isFeatured: true,
-  // },
+  {
+    id: 2,
+    category: "Health",
+    title: "Physio Phyx",
+    image:
+      "/assets/images/projects/PhysioPhyx-hero-WIP.jpg",
+    clipClass: "tech-clip-bl",
+    slug: "physio-phyx",
+    isFeatured: true,
+  },
   // {
   //   id: 3,
   //   category: "Real Estate",

@@ -8,7 +8,7 @@ import Icon from "./Icon";
 // Lazy load Calendly modal - only loads when user opens it
 const PopupModal = dynamic(
   () => import("react-calendly").then((mod) => mod.PopupModal),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function Hero() {
