@@ -43,9 +43,11 @@ export default function FeaturedWork() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full mb-16">
               {projects.map((project, index) => (
-                <Link
+                <a
                   key={project.id}
-                  href={`/projects/${project.slug}`}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block"
                 >
                   <m.div
@@ -80,7 +82,7 @@ export default function FeaturedWork() {
                       </div>
                     </div>
                   </m.div>
-                </Link>
+                </a>
               ))}
             </div>
 

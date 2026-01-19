@@ -4,15 +4,8 @@ export interface Project {
   category: string;
   image: string;
   clipClass?: string;
-  slug?: string;
   isFeatured?: boolean;
-  subheading?: string;
-  description?: string;
-  challenge?: string;
-  solution?: string;
-  results?: string;
-  techStack?: string[];
-  link?: string;
+  link: string;
 }
 
 export const PROJECTS: Project[] = [
@@ -22,110 +15,18 @@ export const PROJECTS: Project[] = [
     title: "By Lia Makeup",
     image: "/assets/images/projects/byLiaMakeup-Hero.jpeg",
     clipClass: "tech-clip-br",
-    slug: "by-lia-makeup",
     isFeatured: true,
     link: "https://by-lia-makeup.vercel.app",
-    subheading: "Delivering a refined digital presence for a bridal makeup artist, designed to reflect elegance, trust, and attention to detail.",
-    description: "Our approach focused on creating a seamless, intuitive experience for brides, making it easy to explore services, view portfolios, and enquire with confidence. Through thoughtful design and careful planning, we delivered a website that supports bookings while showcasing the artistry behind every look",
-    challenge: "The client needed a website that felt professional and luxurious while remaining warm and approachable. It was important to clearly showcase bridal work, build trust with potential clients, and provide an easy way for brides to enquire without feeling overwhelmed.",
-    solution: "We designed a clean, elegant website that highlights the client’s bridal portfolio and services. The layout was structured to guide users naturally through the content, with clear calls to action, mobile-friendly design, and a booking-focused enquiry flow tailored for brides.",
-    results: "The final website delivers a polished, cohesive online presence that reflects the client’s brand and expertise. Brides can easily explore services, view past work, and get in touch, resulting in a smoother enquiry process and a stronger first impression."
   },
   {
     id: 2,
     category: "Health",
     title: "Physio Phyx",
-    image:
-      "/assets/images/projects/PhysioPhyx-hero-WIP.jpg",
+    image: "/assets/images/projects/PhysioPhyx-hero-WIP.jpg",
     clipClass: "tech-clip-bl",
-    slug: "physio-phyx",
     isFeatured: true,
-    subheading: "A modern digital presence designed to support movement, recovery, and long-term wellbeing.",
-    description: "PhysioPhyx required a website that clearly communicates its services while building trust with new and existing patients. The focus was on clarity, accessibility, and creating a welcoming experience that reflects a professional, patient-first approach to physiotherapy.",
-    challenge: "The challenge was to present clinical information in a way that was easy to understand, reassuring, and accessible across all devices.",
-    solution: "We designed a clean, intuitive website with clear service breakdowns, simple navigation, and strong calls to action. The layout prioritises ease of use, readability, and accessibility, ensuring patients can quickly find information and book appointments with confidence.",
-    results: "The final website delivers a clear and trustworthy online presence that reflects the PhysioPhyx brand. Patients can easily explore services, understand treatment options, and take the next step, resulting in a smoother user journey and stronger first impressions.",
-
+    link: "https://physio-phyx.vercel.app/",
   },
-  // {
-  //   id: 3,
-  //   category: "Real Estate",
-  //   title: "Tower Prime",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuBwQCisqPuLqbMpc1Xbz73mQYnpVHny4rmR5XRe71hwSP1AOlOLu50FwFU4eibJjsLxB4zrMPLYNFA7AkydYO9b6TDJgzN5ffP1dv68v-9cDvNujE9Km97Kx6h6cfNhQ-G90UidO8yZFcz0TrYDykP2WEFDBdIrq5HLzB-vMnZ93_o3huj2PrkVn-0mZIndO-LsmrRtz09jVsvfB-Ly_Qudq3VmF6PdDZcIHuhWth8hDhunMwehM5EN4pD3PxuyozFSCNr3Kz1FT0o",
-  //   clipClass: "tech-clip-tr",
-  //   slug: "tower-prime",
-  //   isFeatured: true,
-  // },
-  // {
-  //   id: 4,
-  //   category: "SaaS",
-  //   title: "Flow Systems",
-  //   image:
-  //     "https://lh3.googleusercontent.com/aida-public/AB6AXuDeTvUcXS-2xa6WwkavbM8cAYg4XdtoL-GaRjQGx3WcjU_3R0rR3Y-Si5qy9D216ipak-jCdlz1wS4Z0Ql_H0wFwMBySAHXOmnlTk5dmpgMF4X_xAIpz3WTSYgQg6QMsgpe2PwKjsQo2V8pGVTub-GwIEMmpc7zOXIpfm5fI_hQZMBJ4jyY5ro85-i04s3NGhp-ivWivcCud2JcvjMZdB18wNUCBEGUpudFqmG0HJQ_qLq1tMD8-X2nByY14kixoUER-Oom2S02mX8",
-  //   clipClass: "tech-clip-tl",
-  //   slug: "flow-systems",
-  //   isFeatured: true,
-  // },
-  // {
-  //   id: 5,
-  //   category: "Fintech",
-  //   title: "Nova Analytics",
-  //   image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-  //   slug: "nova-analytics",
-  //   isFeatured: false,
-  // },
-  // {
-  //   id: 6,
-  //   category: "Mobile",
-  //   title: "Vault Mobile",
-  //   image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-  //   slug: "vault-mobile",
-  //   isFeatured: false,
-  // },
-  // {
-  //   id: 7,
-  //   category: "AI",
-  //   title: "Neural Net",
-  //   image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
-  //   slug: "neural-net",
-  //   isFeatured: false,
-  // },
-  // {
-  //   id: 8,
-  //   category: "E-Commerce",
-  //   title: "Cart Logic",
-  //   image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80",
-  //   slug: "cart-logic",
-  //   isFeatured: false,
-  // },
-  // {
-  //   id: 9,
-  //   category: "Health",
-  //   title: "MediSync",
-  //   image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-  //   slug: "medisync",
-  //   isFeatured: false,
-  // },
-  // {
-  //   id: 10,
-  //   category: "Security",
-  //   title: "Structura",
-  //   image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
-  //   slug: "structura",
-  //   isFeatured: false,
-  // },
 ];
 
-export const PROJECT_CATEGORIES = ["All", "UI/UX", "Web3", "Fintech", "SaaS", "Mobile", "Health", "Security", "E-Commerce", "Real Estate", "AI"];
-
 export const getFeaturedProjects = () => PROJECTS.filter((p) => p.isFeatured);
-
-export const getProjectsByCategory = (category: string) =>
-  category === "All" ? PROJECTS : PROJECTS.filter((p) => p.category === category);
-
-export const getProjectBySlug = (slug: string) =>
-  PROJECTS.find((p) => p.slug === slug);
-
-export const getRelatedProjects = (currentId: number, limit: number = 3) =>
-  PROJECTS.filter((p) => p.id !== currentId).slice(0, limit);

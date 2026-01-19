@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { m, MotionProvider } from "@/app/components/LazyMotion";
-import Link from "next/link";
 import { PROJECTS } from "@/app/constants";
 import CursorPreview from "@/app/components/CursorPreview";
 import Header from "../components/Header";
@@ -114,9 +113,11 @@ export default function ProjectsPage() {
             {/* Projects List */}
             <div className="flex flex-col w-full mb-16 gap-2">
               {paginatedProjects.map((project, index) => (
-                <Link
+                <a
                   key={project.id}
-                  href={`/projects/${project.slug}`}
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="block"
                 >
                   <m.div
@@ -146,14 +147,14 @@ export default function ProjectsPage() {
                     </div>
                     <div className="flex items-center gap-4">
                       <span className="hidden md:inline-block body-small text-slate-400 font-light opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-x-2 group-hover:translate-x-0">
-                        View Project
+                        View Site
                       </span>
                       <div className="w-10 h-10 flex shrink-0 items-center justify-center border border-slate-200 text-slate-400 group-hover:bg-primary group-hover:border-primary group-hover:text-white transition-all duration-300">
                         <Icon name="arrow_outward" size={14} />
                       </div>
                     </div>
                   </m.div>
-                </Link>
+                </a>
               ))}
             </div>
 
