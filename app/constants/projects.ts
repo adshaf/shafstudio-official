@@ -40,6 +40,12 @@ export const PROJECTS: Project[] = [
     clipClass: "tech-clip-bl",
     slug: "physio-phyx",
     isFeatured: true,
+    subheading: "A modern digital presence designed to support movement, recovery, and long-term wellbeing.",
+    description: "PhysioPhyx required a website that clearly communicates its services while building trust with new and existing patients. The focus was on clarity, accessibility, and creating a welcoming experience that reflects a professional, patient-first approach to physiotherapy.",
+    challenge: "The challenge was to present clinical information in a way that was easy to understand, reassuring, and accessible across all devices.",
+    solution: "We designed a clean, intuitive website with clear service breakdowns, simple navigation, and strong calls to action. The layout prioritises ease of use, readability, and accessibility, ensuring patients can quickly find information and book appointments with confidence.",
+    results: "The final website delivers a clear and trustworthy online presence that reflects the PhysioPhyx brand. Patients can easily explore services, understand treatment options, and take the next step, resulting in a smoother user journey and stronger first impressions.",
+
   },
   // {
   //   id: 3,
