@@ -40,6 +40,16 @@ export const PROJECTS: Project[] = [
     link: "https://videography-website.vercel.app/",
     status: "sample"
   },
+  {
+    id: 4,
+    category: "Construction",
+    title: "Luxe Estates",
+    image: "/assets/images/projects/construction-website-hero.jpg",
+    clipClass: "tech-clip-tl",
+    isFeatured: true,
+    link: "https://construction-website-beta-jet.vercel.app/",
+    status: "sample"
+  },
 ];
 
 export const getFeaturedProjects = () => PROJECTS.filter((p) => p.isFeatured);
