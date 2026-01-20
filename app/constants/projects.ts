@@ -6,6 +6,7 @@ export interface Project {
   clipClass?: string;
   isFeatured?: boolean;
   link: string;
+  status: "live" | "sample" | "wip" 
 }
 
 export const PROJECTS: Project[] = [
@@ -17,15 +18,27 @@ export const PROJECTS: Project[] = [
     clipClass: "tech-clip-br",
     isFeatured: true,
     link: "https://by-lia-makeup.vercel.app",
+    status: "live"
   },
   {
     id: 2,
     category: "Health",
     title: "Physio Phyx",
-    image: "/assets/images/projects/PhysioPhyx-hero-WIP.jpg",
+    image: "/assets/images/projects/physiophyx-hero.png",
     clipClass: "tech-clip-bl",
     isFeatured: true,
     link: "https://physio-phyx.vercel.app/",
+    status: "wip"
+  },
+  {
+    id: 3,
+    category: "Videography",
+    title: "Motion Showcase",
+    image: "/assets/images/projects/videography-website-hero.jpg",
+    clipClass: "tech-clip-tr",
+    isFeatured: true,
+    link: "https://videography-website.vercel.app/",
+    status: "sample"
   },
 ];
 

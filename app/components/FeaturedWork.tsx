@@ -69,9 +69,24 @@ export default function FeaturedWork() {
                       sizes="(max-width: 768px) 100vw, 50vw"
                     />
                     <div className="absolute inset-0 bg-linear-to-t from-blue-900/35 to-transparent opacity-80 group-hover:opacity-95 transition-opacity duration-300"></div>
+
                     <div className="absolute bottom-0 left-0 w-full py-8 px-11 translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
-                      <div className="flex justify-between items-center border-l-2 border-primary pl-4">
-                        <div>
+                      <div className="flex justify-between items-end border-l-2 border-primary pl-4">
+                        <div className="flex flex-col gap-2">
+                          {/* Status Tag - Eyebrow */}
+                          {project.status !== "live" && (
+                            <span
+                              className={`text-xs font-bold uppercase tracking-wider px-2 py-1 rounded w-fit ${
+                                project.status === "wip"
+                                  ? "bg-primary text-white"
+                                  : "bg-amber-600 text-white"
+                              }`}
+                            >
+                              {project.status === "wip"
+                                ? "in progress"
+                                : "Sample"}
+                            </span>
+                          )}
                           <h3 className="heading-major-inverse uppercase">
                             {project.title}
                           </h3>
