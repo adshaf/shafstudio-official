@@ -6,6 +6,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Icon from "./Icon";
 
+interface MenuItem {
+  label: string;
+  href: string;
+  isPage?: boolean;
+}
+
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
@@ -18,6 +24,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Work", href: "#work" },
+    { label: "Pricing", href: "/pricing", isPage: true },
     { label: "Process", href: "#process" },
     { label: "Testimonials", href: "#testimonials" },
   ];
@@ -73,7 +80,13 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                     }}
                   >
                     <Link
-                      href={pathname === "/" ? item.href : `/${item.href}`}
+                      href={
+                        item.isPage
+                          ? item.href
+                          : pathname === "/"
+                            ? item.href
+                            : `/${item.href}`
+                      }
                       className="flex items-center justify-between px-4 py-3 text-slate-700 hover:text-primary hover:bg-blue-50 transition-all duration-200 heading-minor"
                       onClick={onClose}
                     >

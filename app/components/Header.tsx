@@ -84,6 +84,12 @@ export default function Header() {
             </Link>
             <Link
               className="link-nav"
+              href="/pricing"
+            >
+              Pricing
+            </Link>
+            <Link
+              className="link-nav"
               href={pathname === "/" ? "#process" : "/#process"}
             >
               Process
