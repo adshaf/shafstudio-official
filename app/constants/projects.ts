@@ -22,13 +22,13 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 2,
-    category: "Health",
-    title: "Physio Phyx",
-    image: "/assets/images/projects/physiophyx-hero.png",
+    category: "Landscape",
+    title: "Scape",
+    image: "/assets/images/projects/landscape-website-hero.jpg",
     clipClass: "tech-clip-bl",
     isFeatured: true,
-    link: "https://physio-phyx.vercel.app/",
-    status: "wip"
+    link: "https://sample-landscape-website.vercel.app/",
+    status: "sample"
   },
   {
     id: 3,
@@ -50,6 +50,17 @@ export const PROJECTS: Project[] = [
     link: "https://construction-website-beta-jet.vercel.app/",
     status: "sample"
   },
+  {
+    id: 5,
+    category: "Health",
+    title: "Physio Phyx",
+    image: "/assets/images/projects/physiophyx-hero.png",
+    clipClass: "tech-clip-bl",
+    isFeatured: false,
+    link: "https://physio-phyx.vercel.app/",
+    status: "sample"
+  },
+  
 ];
 
 export const getFeaturedProjects = () => PROJECTS.filter((p) => p.isFeatured);

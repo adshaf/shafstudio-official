@@ -82,10 +82,7 @@ export default function Header() {
             >
               Services
             </Link>
-            <Link
-              className="link-nav"
-              href="/pricing"
-            >
+            <Link className="link-nav" href="/pricing">
               Pricing
             </Link>
             <Link
@@ -94,12 +91,12 @@ export default function Header() {
             >
               Process
             </Link>
-            <Link
+            {/* <Link
               className="link-nav"
               href={pathname === "/" ? "#testimonials" : "/#testimonials"}
             >
               Testimonials
-            </Link>
+            </Link> */}
           </nav>
           <div className="flex items-center gap-4">
             <Link
