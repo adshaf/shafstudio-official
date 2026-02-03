@@ -29,7 +29,7 @@ export default function PricingPage() {
                 tier="Quick Start"
                 price="1,500"
                 period=""
-                description="Growing businesses that want a polished, semi-custom website tailored to their brand."
+                description="Early stage businesses that want a website up and running ASAP."
                 features={[
                   "Template-based website (choose from a curated set)",
                   "Up to 5 standard pages",
